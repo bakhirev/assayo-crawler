@@ -1,0 +1,23 @@
+{
+  "loadConfigFromUrl2": {
+    "url": "http://localhost:3004/",
+    "method": "get",
+    "headers": {},
+    "body": null
+  },
+  "loadTasksFromUrl": {
+    "url": "http://localhost:3004/tasks",
+    "method": "get",
+    "headers": {},
+    "body": null
+  },
+  "output": {
+    "folder": "logs",
+    "needCreateAfterInit": true
+  },
+  "input": {
+    "folder": "repositories",
+    "needCreateAfterInit": true,
+    "needClearAfterUse": false
+  }
+}

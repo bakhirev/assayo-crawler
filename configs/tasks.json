@@ -1,0 +1,27 @@
+[
+  {
+    "code": "backend",
+    "folder": "sber",
+    "repositories": [
+      {
+        "url": "https://github.com/bakhirev/assayo.git",
+        "needClearAfterUse": false
+      },
+      {
+        "folder": "backend",
+        "url": "https://github.com/bakhirev/html-game.git"
+      },
+      {
+        "url": "https://github.com/bakhirev/lab_scp.git"
+      }
+    ]
+  },
+  {
+    "code": "frontend",
+    "repositories": [
+      {
+        "url": "https://github.com/bakhirev/lab_scp.git"
+      }
+    ]
+  }
+]
