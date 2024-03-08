@@ -2,6 +2,7 @@ const createLogForRepository = require('../bash/createLogForRepository');
 const fetchAndUpdateBranch = require('../bash/fetchAndUpdateBranch');
 const downloadRepository = require('../bash/downloadRepository');
 const saveCommonLog = require('../bash/saveCommonLog');
+const removeFolders = require('../bash/removeFolders');
 const Errors = require('../errors/index');
 const { createFolder, getFolderNameByUrl } = require('../../helpers/files');
 const getTasks = require('../configs/getTasks');
@@ -35,17 +36,31 @@ class Crawler {
 
   async applyTasks(tasks, config) {
     this.isProcessing = true;
-    let index = 0;
-    log.info(`Started to log update. Number of tasks: ${tasks?.length || 0}`);
-    for (const task of tasks) {
-      if (!task.code) {
-        log.warn(`Task №${index + 1} have not "code" for save result.`);
+    log.info('Started to log update.');
+
+    for (let i = 0, l = tasks.length; i < l; i+= 1) {
+      const task = tasks[i];
+
+      log.info(`Task processing has been started (${i + 1} / ${l || 0}, code: ${task?.code})`);
+
+      if (typeof task.status === 'number' && task.status !== 1) {
+        log.warning(`Task "status" is not 1 (ready to parse).`);
         continue;
       }
-      log.info(`Started to complete task №${index + 1} / ${tasks?.length || 0} (code: ${task?.code})`);
+
+      if (!task.code) {
+        log.warning(`Task have not "code" for save result.`);
+        continue;
+      }
+
+      if (!task.repositories?.length) {
+        log.warning(`Task have not "repositories" for processing.`);
+        continue;
+      }
+
       await this.applyTask(task, config);
-      index++;
     }
+
     log.info(`Logs has been updated.`);
     this.isProcessing = false;
   }
@@ -53,12 +68,17 @@ class Crawler {
   async applyTask(task, config) {
     let errorMessage = '';
     const folders = [];
+    const foldersForRemove = [];
 
-    for (const repository of task.repositories) {
+    for (let i = 0, l = task.repositories.length; i < l; i+= 1) {
+      const repository = task.repositories[i];
       const parentFolder = repository.folder
         ? `./${config.input.folder}/${repository.folder}`
         : `./${config.input.folder}`;
       const folder = `${parentFolder}/${getFolderNameByUrl(repository.url)}`;
+
+      log.info(`Repository processing has been started (${i + 1} / ${l}).`);
+      log.debug(`URL: ${repository.url}`);
 
       errorMessage = createFolder(parentFolder);
       if (errorMessage) {
@@ -72,13 +92,16 @@ class Crawler {
         continue;
       }
 
+      if (repository.needClearAfterUse) {
+        foldersForRemove.push(folder);
+      }
+
       errorMessage = await fetchAndUpdateBranch(folder, config, repository);
       if (errorMessage) {
         this.errors.push(errorMessage);
-        continue;
       }
 
-      errorMessage = await createLogForRepository(folder, config, repository);
+      errorMessage = await createLogForRepository(folder, config, task);
       if (errorMessage) {
         this.errors.push(errorMessage);
         continue;
@@ -87,9 +110,16 @@ class Crawler {
       folders.push(folder);
     }
 
+    log.info(`Creating common log file has been started.`);
+
     errorMessage = await saveCommonLog(folders, task, config, task.repositories);
     if (errorMessage) {
       this.errors.push(errorMessage);
+    }
+
+    errorMessage = await removeFolders(folders, foldersForRemove, task);
+    if (errorMessage) {
+      this.errors.push(...errorMessage);
     }
   }
 }

@@ -1,7 +1,8 @@
 [
   {
-    "code": "backend",
+    "code": "test_project",
     "folder": "sber",
+	"status": 2,
     "repositories": [
       {
         "url": "https://github.com/bakhirev/assayo.git",
@@ -18,10 +19,20 @@
   },
   {
     "code": "frontend",
+	"status": 1,
     "repositories": [
       {
         "url": "https://github.com/bakhirev/lab_scp.git"
       }
+    ]
+  },
+  {
+    "code": "backend",
+    "folder": "acrq",
+	  "status": 1,
+    "removeFileInfo": true,
+    "mailmap": "",
+    "repositories": [
     ]
   }
 ]

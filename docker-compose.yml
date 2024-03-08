@@ -1,0 +1,30 @@
+# docker-compose.yml
+
+version: "3.9"
+services:
+
+  crawler:
+    build:
+      context: .
+    environment:
+      PORT: null
+      LOAD_CONFIG_URL: null
+      LOAD_CONFIG_METHOD: null
+      LOAD_CONFIG_HEADERS: null
+      LOAD_CONFIG_BODY: null
+      LOAD_TASKS_URL: null
+      LOAD_TASKS_METHOD: null
+      LOAD_TASKS_HEADERS: null
+      LOAD_TASKS_BODY: null
+      OUTPUT_FOLDER: null
+      OUTPUT_NEED_CREATE_AFTER_INIT: null
+      INPUT_FOLDER: null
+      INPUT_NEED_CREATE_AFTER_INIT: null
+      INPUT_NEED_CLEAR_AFTER_USE: null
+    ports:
+      - '3000:3000'
+    volumes:
+      - addressbook-db:/var/lib/postgresql/data
+
+volumes:
+  crawler:

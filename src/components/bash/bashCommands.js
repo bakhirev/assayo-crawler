@@ -1,5 +1,6 @@
 const bashCommands = {
   getLog: 'git --no-pager log --numstat --oneline --all --reverse --date=iso-strict --pretty=format:"%ad>%cN>%cE>%s" > log.txt',
+  getLogWithoutFile: 'git --no-pager log --oneline --all --reverse --date=iso-strict --pretty=format:"%ad>%cN>%cE>%s" > log.txt',
   getRepository: (url) => `git clone ${url}`,
   openFolder: (folder) => `cd ${folder}`,
   removeFolder: (folder) => `rm -rf ${folder}`,

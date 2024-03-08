@@ -5,7 +5,7 @@
     "headers": {},
     "body": null
   },
-  "loadTasksFromUrl": {
+  "loadTasksFromUrl2": {
     "url": "http://localhost:3004/tasks",
     "method": "get",
     "headers": {},
