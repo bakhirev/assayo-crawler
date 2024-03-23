@@ -18,6 +18,6 @@
   "input": {
     "folder": "repositories",
     "needCreateAfterInit": true,
-    "needClearAfterUse": false
+    "needClearAfterUse": true
   }
 }

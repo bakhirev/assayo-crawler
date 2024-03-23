@@ -107,6 +107,14 @@ class Crawler {
         continue;
       }
 
+      const needClearAfterUse = config.input.needClearAfterUse
+        || task.needClearAfterUse
+        || repository.needClearAfterUse;
+
+      if (needClearAfterUse) {
+        
+      }
+
       folders.push(folder);
     }
 
