@@ -1,8 +1,8 @@
 [
   {
     "code": "test_project",
-    "folder": "sber",
-	  "status": 1,
+    "folder": "some_folder",
+    "status": 1,
     "repositories": [
       {
         "url": "https://github.com/bakhirev/assayo.git",
@@ -19,7 +19,7 @@
   },
   {
     "code": "frontend",
-	  "status": 1,
+    "status": 1,
     "repositories": [
       {
         "url": "https://github.com/bakhirev/lab_scp.git"
@@ -28,44 +28,47 @@
   },
   {
     "code": "backend",
-    "folder": "acrq",
-	  "status": 2,
+    "folder": "gmail",
+    "status": 2,
     "removeFileInfo": true,
     "mailmap": "",
     "repositories": [
-        { "url": "https://bitbucket.region.vtb.ru/scm/acrq/acrq-analytical.git" },
-        { "url": "https://bitbucket.region.vtb.ru/scm/acrq/acrq-auto-approver.git" },
-        { "url": "https://bitbucket.region.vtb.ru/scm/acrq/acrq-backend.git" },
-        { "url": "https://bitbucket.region.vtb.ru/scm/acrq/acrq-contractors-service.git" },
-        { "url": "https://bitbucket.region.vtb.ru/scm/acrq/acrq-db-prepearer.git" },
-        { "url": "https://bitbucket.region.vtb.ru/scm/acrq/acrq-dictionary-service.git" },
-        { "url": "https://bitbucket.region.vtb.ru/scm/acrq/acrq-easup-worker.git" },
-        { "url": "https://bitbucket.region.vtb.ru/scm/acrq/acrq-execution-service.git" },
-        { "url": "https://bitbucket.region.vtb.ru/scm/acrq/acrq-idm-service.git" },
-        { "url": "https://bitbucket.region.vtb.ru/scm/acrq/acrq-libs.git" },
-        { "url": "https://bitbucket.region.vtb.ru/scm/acrq/acrq-migrations.git" },
-        { "url": "https://bitbucket.region.vtb.ru/scm/acrq/acrq-monitoring-lib.git" },
-        { "url": "https://bitbucket.region.vtb.ru/scm/acrq/acrq-nginx.git" },
-        { "url": "https://bitbucket.region.vtb.ru/scm/acrq/acrq-partitioning-service.git" },
-        { "url": "https://bitbucket.region.vtb.ru/scm/acrq/acrq-personnel-service.git" },
-        { "url": "https://bitbucket.region.vtb.ru/scm/acrq/acrq-report-service.git" },
-        { "url": "https://bitbucket.region.vtb.ru/scm/acrq/acrq-rm-integration-service.git" },
-        { "url": "https://bitbucket.region.vtb.ru/scm/acrq/acrq-sm-stub-service.git" },
-        { "url": "https://bitbucket.region.vtb.ru/scm/acrq/acrq-sm-worker.git" },
-        { "url": "https://bitbucket.region.vtb.ru/scm/acrq/acrq-tsr.git" },
-        { "url": "https://bitbucket.region.vtb.ru/scm/acrq/adirectory-service.git" },
-        { "url": "https://bitbucket.region.vtb.ru/scm/acrq/api-service.git" },
-        { "url": "https://bitbucket.region.vtb.ru/scm/acrq/archive.git" },
-        { "url": "https://bitbucket.region.vtb.ru/scm/acrq/auth-service.git" },
-        { "url": "https://bitbucket.region.vtb.ru/scm/acrq/claim-auto-processor.git" },
-        { "url": "https://bitbucket.region.vtb.ru/scm/acrq/cross.git" },
-        { "url": "https://bitbucket.region.vtb.ru/scm/acrq/custom-dictionary.git" },
-        { "url": "https://bitbucket.region.vtb.ru/scm/acrq/ext-employee-service.git" },
-        { "url": "https://bitbucket.region.vtb.ru/scm/acrq/notification-service.git" },
-        { "url": "https://bitbucket.region.vtb.ru/scm/acrq/rz-dictionaries-transfer.git" },
-        { "url": "https://bitbucket.region.vtb.ru/scm/acrq/service-template.git" },
-        { "url": "https://bitbucket.region.vtb.ru/scm/acrq/t1-instance.git" },
-        { "url": "https://bitbucket.region.vtb.ru/scm/acrq/watcher.git" }
+      {
+        "url": "https://bitbucket.gmail.com/scm/hh/hh-analytical.git"
+      },
+      {
+        "url": "https://bitbucket.gmail.com/scm/hh/hh-backend.git"
+      },
+      {
+        "url": "https://bitbucket.gmail.com/scm/hh/hh-execution-service.git"
+      },
+      {
+        "url": "https://bitbucket.gmail.com/scm/hh/hh-idm-service.git"
+      },
+      {
+        "url": "https://bitbucket.gmail.com/scm/hh/hh-libs.git"
+      },
+      {
+        "url": "https://bitbucket.gmail.com/scm/hh/hh-migrations.git"
+      },
+      {
+        "url": "https://bitbucket.gmail.com/scm/hh/hh-monitoring-lib.git"
+      },
+      {
+        "url": "https://bitbucket.gmail.com/scm/hh/hh-nginx.git"
+      },
+      {
+        "url": "https://bitbucket.gmail.com/scm/hh/hh-partitioning-service.git"
+      },
+      {
+        "url": "https://bitbucket.gmail.com/scm/hh/notification-service.git"
+      },
+      {
+        "url": "https://bitbucket.gmail.com/scm/hh/rz-dictionaries-transfer.git"
+      },
+      {
+        "url": "https://bitbucket.gmail.com/scm/hh/watcher.git"
+      }
     ]
   }
 ]

@@ -22,9 +22,9 @@
 <a name="link-"></a>
 ### Архитектура приложения
 
-<img src="./schema.svg" width="70%" />
+<img src="https://raw.githubusercontent.com/bakhirev/assayo-crawler/12af4410fc93384cafb108a4429e43f9a874dbaa/schema.svg" width="70%" />
 
-1. Reports showcase UI отображает список доступных отчётов. Каждый отчёт состоит из названия, описания и списка репозиториев.
+1. [Reports showcase UI](https://github.com/bakhirev/assayo-showcase) отображает список доступных отчётов. Каждый отчёт состоит из названия, описания и списка репозиториев.
 2. [Crawler service](https://github.com/bakhirev/assayo-crawler) **(вы тут)** собирает логи репозиториев для отчёта.
 3. [Log visualization UI](https://github.com/bakhirev/assayo) отображает отчёты. Для работы ему нужен файл лога.
 
@@ -61,7 +61,7 @@
 <a name="link-"></a>
 #### Запуск Docker контейнера
 
-1. Скачайте [docker образ](https://hub.docker.com/r/bakhirev/assayo-crawler);
+1. Скачайте [Docker образ](https://hub.docker.com/r/bakhirev/assayo-crawler);
 2. Поднимите его в локальной сети;
 
 <a name="link-"></a>

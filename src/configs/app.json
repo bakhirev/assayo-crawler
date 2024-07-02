@@ -1,11 +1,11 @@
 {
-  "loadConfigFromUrl2": {
+  "loadConfigFromUrl": {
     "url": "http://localhost:3004/",
     "method": "get",
     "headers": {},
     "body": null
   },
-  "loadTasksFromUrl2": {
+  "loadTasksFromUrl": {
     "url": "http://localhost:3004/tasks",
     "method": "get",
     "headers": {},
