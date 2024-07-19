@@ -4,12 +4,8 @@
 /.pnp
 /.idea
 /build
-/logs
-/repositories
-/src/logs
-/src/repositories
-/node/logs
-/node/repositories
+/node/input
+/node/output
 
 npm-debug.log*
 yarn-debug.log*
