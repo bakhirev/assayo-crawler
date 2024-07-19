@@ -1,5 +1,7 @@
 const Koa = require('koa');
+const KoaStatic = require('koa-static');
 const Router = require('koa-router');
+const path = require('path');
 
 const getConfigs = require('./components/configs/getConfigs');
 const Crawler = require('./components/crawler');
@@ -36,6 +38,8 @@ router.get('/check', async (ctx, next) => {
   sendResponse(ctx, 200, 'ok');
   next();
 });
+
+app.use(KoaStatic(path.resolve('./html/')));
 
 app.use(router.routes());
 

@@ -1,0 +1,25 @@
+@import './variables.scss';
+
+html {
+    box-sizing: border-box;
+}
+
+*,
+*:before,
+*:after {
+    outline: none;
+    box-sizing: inherit;
+}
+
+body,
+input,
+select {
+    font-family: Arial, sans-serif;
+    color: var(--color-neutral-black);
+}
+
+html,
+body,
+#root {
+    height: 100%;
+}

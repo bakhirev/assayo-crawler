@@ -1,0 +1,55 @@
+@import 'src/styles/variables';
+
+.welcome_area {
+  display: inline-block;
+  width: 50%;
+  max-width: 300px;
+  padding: 0;
+  white-space: normal;
+  vertical-align: top;
+
+  &_wrapper {
+    display: block;
+    width: 100%;
+    margin: 0 auto;
+    white-space: nowrap;
+  }
+
+  &_icon {
+    display: block;
+    width: 90%;
+    max-width: 250px;
+    margin: 0 auto var(--space-xxl);
+  }
+
+  &_description {
+    font-weight: 100;
+    font-size: var(--font-s);
+    font-family: Arial, Verdana, sans-serif;
+
+    display: block;
+    margin: 0 auto var(--space-xxl);
+
+    text-align: center;
+    line-height: 1.5;
+    text-decoration: none;
+    vertical-align: bottom;
+    white-space: normal;
+    color: #73809F;
+  }
+
+  &_link {
+    margin: 0;
+    text-decoration: underline;
+    cursor: pointer;
+    color: #73809F;
+
+    &:hover {
+      color: #73809F;
+    }
+  }
+}
+
+.welcome_area + .welcome_area {
+  margin-left: 10vw;
+}

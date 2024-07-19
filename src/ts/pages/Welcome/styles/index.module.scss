@@ -1,0 +1,78 @@
+@import 'src/styles/variables';
+
+.welcome {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: calc(100vw - 20px);
+  height: calc(100vh - 60px);
+  padding: 0;
+  margin: 0;
+
+  box-sizing: border-box;
+  text-align: center;
+
+  &_row {
+    width: auto;
+  }
+
+  &_description {
+    display: inline-block;
+    width: 100%;
+    max-width: 700px;
+    padding: 0;
+    margin: 16px auto 0;
+
+    text-align: center;
+    text-decoration: none;
+  }
+
+  &_title {
+    font-size: 32px;
+    font-weight: 100;
+    margin: 0 auto var(--space-s);
+    padding: 0;
+  }
+
+  &_description {
+    font-weight: 100;
+    font-size: var(--font-m);
+    font-family: Arial, Verdana, sans-serif;
+
+    display: block;
+    margin: 0 auto 15vh;
+
+    text-align: center;
+    line-height: 1.5;
+    text-decoration: none;
+    vertical-align: bottom;
+    white-space: normal;
+    color: #73809F;
+  }
+
+  &_title_link {
+    margin: 0 12px;
+    text-decoration: underline;
+    cursor: pointer;
+  }
+}
+
+@media (max-width: 800px) {
+  .welcome {
+    display: block;
+    width: 100%;
+    height: auto;
+    padding: 32px 0 0 0;
+
+    &_title {
+      width: 90%;
+      font-size: var(--font-l);
+    }
+
+    &_description {
+      width: 90%;
+    }
+  }
+}

@@ -1,11 +1,14 @@
 FROM node:18.16.0-alpine3.17
 
-RUN mkdir -p /usr/src/assayo_crawler
+RUN mkdir -p /usr/src/assayo_crawler/html
 WORKDIR /usr/src/assayo_crawler
 
-COPY src/ .
+COPY node/ .
+COPY build/ ./html
 COPY package.json package-lock.json .
 RUN npm install
+
+ENV PORT 3000
 
 EXPOSE 3000
 CMD [ "npm", "start"]

@@ -1,0 +1,23 @@
+@import 'src/styles/variables';
+
+.table {
+  &_sort_up,
+  &_sort_down {
+    display: inline-block;
+    height: 0;
+    width: 0;
+    margin: 0 0 -5px 8px;
+
+    cursor: pointer;
+    transform: rotateZ(-45deg);
+
+    border: 6px solid var(--color-grey);
+    border-left-color: var(--color-white);
+    border-bottom-color: var(--color-white);
+  }
+
+  &_sort_down {
+    margin: 0 0 3px 8px;
+    transform: rotateZ(135deg);
+  }
+}
