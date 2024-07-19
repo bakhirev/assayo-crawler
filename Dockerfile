@@ -5,7 +5,6 @@ WORKDIR /usr/src/assayo_crawler
 
 COPY node/ .
 COPY build/ ./html
-COPY package.json package-lock.json .
 RUN npm install
 
 ENV PORT 3000
