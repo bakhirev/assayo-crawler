@@ -3,6 +3,7 @@
 /.vscode
 /.pnp
 /.idea
+/build
 /logs
 /repositories
 /src/logs

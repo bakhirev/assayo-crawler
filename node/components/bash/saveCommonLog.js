@@ -5,8 +5,8 @@ const ERROR = require('../errors/constants');
 async function saveCommonLog(folders, task, config, repository) {
   const files = folders.map((folder) => `${folder}.txt`);
   const folder = task.folder
-    ? `./${config.output.folder}/${task.folder}`
-    : `./${config.output.folder}`;
+    ? `./output/${config.output.folder}/${task.folder}`
+    : `./output/${config.output.folder}`;
   const file = `${folder}/${task.code}.txt`;
 
   if (!isExists(folder)) {

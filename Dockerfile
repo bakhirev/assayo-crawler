@@ -7,7 +7,7 @@ COPY node/ .
 COPY build/ ./html
 RUN npm install
 
-ENV PORT 3000
+ENV PORT 80
 
-EXPOSE 3000
-CMD [ "npm", "start"]
+EXPOSE 80
+CMD [ "node", "index.js"]

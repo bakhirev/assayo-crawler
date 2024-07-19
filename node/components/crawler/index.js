@@ -19,10 +19,10 @@ class Crawler {
   createFolders() {
     const { input, output } = this.config;
     if (input.needCreateAfterInit !== false) {
-      createFolder(this.config.input.folder);
+      createFolder(`input/${this.config.input.folder}`);
     }
     if (output.needCreateAfterInit !== false) {
-      createFolder(this.config.output.folder);
+      createFolder(`output/${this.config.output.folder}`);
     }
   }
 
@@ -73,8 +73,8 @@ class Crawler {
     for (let i = 0, l = task.repositories.length; i < l; i+= 1) {
       const repository = task.repositories[i];
       const parentFolder = repository.folder
-        ? `./${config.input.folder}/${repository.folder}`
-        : `./${config.input.folder}`;
+        ? `./input/${config.input.folder}/${repository.folder}`
+        : `./input/${config.input.folder}`;
       const folder = `${parentFolder}/${getFolderNameByUrl(repository.url)}`;
 
       log.info(`Repository processing has been started (${i + 1} / ${l}).`);

@@ -141,6 +141,13 @@
 | `GET`   | `/start` | `{ message: string }` | Запустить обработку списка задач                  |
 | `GET`   | `/check` | `{ message: string }` | Получить текущий статус приложения (health check) |
 
+#### How to update the Docker image?
+- run ```npm run build```
+- run ```docker build -t assayo-crawler .```
+- visually check the image ```docker run --name assayo-crawler -p 80:80 --mount type=bind,source=/c/work/assayo-crawler/node/input,destination=/usr/src/assayo_crawler/input --mount type=bind,source=/c/work/assayo-crawler/node/output,destination=/usr/src/assayo_crawler/output -d assayo-crawler```;
+- add tag ```docker tag assayo-crawler bakhirev/assayo-crawler:latest```;
+- push image to [Docker Hub](https://hub.docker.com/r/bakhirev/assayo-crawler) ```docker push bakhirev/assayo-crawler:latest```;
+
 <a name="link-"></a>
 ### Пожелания, предложения, замечания
 - telegramm [@bakhirev](https://t.me/bakhirev) (приоритетный способ связи)
