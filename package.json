@@ -27,7 +27,7 @@
   },
   "scripts": {
     "dev": "set PORT=3005 && react-app-rewired start",
-    "build": "react-scripts build",
+    "build": "react-scripts build && cd scripts && node remove-hash.js && node update-html.js",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "js:check": "npx eslint \"src/**/*.{ts,tsx,js}\"",

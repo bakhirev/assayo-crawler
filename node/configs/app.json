@@ -1,4 +1,6 @@
 {
+  "canUpdateConfigFromUI": true,
+  "canUpdateTasksFromUI": true,
   "output": {
     "folder": "logs",
     "needCreateAfterInit": true
@@ -6,6 +8,6 @@
   "input": {
     "folder": "repositories",
     "needCreateAfterInit": true,
-    "needClearAfterUse": true
+    "needClearAfterUse": false
   }
 }

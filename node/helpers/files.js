@@ -2,7 +2,7 @@ const fs = require('node:fs');
 const util = require('node:util');
 const { exec } = require('node:child_process');
 
-const log = require('../helpers/logger')('bash');
+const log = require('../components/Logger')('bash');
 
 function isExists(path) {
   if (!path) return false;

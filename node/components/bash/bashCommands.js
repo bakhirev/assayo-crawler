@@ -1,6 +1,11 @@
+function getSaveLogCommand(fileName, withFileInfo = false) {
+  const raw = withFileInfo ? '--raw --numstat' : '';
+  return `git --no-pager log ${raw} --oneline --all --reverse --date=iso-strict --pretty=format:"%ad>%aN>%aE>%s" > ../${fileName}.txt`
+}
+
 const bashCommands = {
-  getLog: (file) => `git --no-pager log --numstat --oneline --all --reverse --date=iso-strict --pretty=format:"%ad>%cN>%cE>%s" > ../${file}.txt`,
-  getLogWithoutFile: (file) => `git --no-pager log --oneline --all --reverse --date=iso-strict --pretty=format:"%ad>%cN>%cE>%s" > ../${file}.txt`,
+  getLog: (file) => getSaveLogCommand(file, true),
+  getLogWithoutFile: (file) => getSaveLogCommand(file),
   getRepository: (url) => `git clone ${url}`,
   openFolder: (folder) => `cd ${folder}`,
   removeFolder: (folder) => `rm -rf ${folder}`,

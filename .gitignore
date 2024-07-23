@@ -4,6 +4,10 @@
 /.pnp
 /.idea
 /build
+/html
+/input
+/output
+/node/html
 /node/input
 /node/output
 

@@ -1,4 +1,4 @@
-const log = require('./logger')('Fetch');
+const log = require('../components/Logger')('Fetch');
 
 function getString(data, callback) {
   if (!data) return data;

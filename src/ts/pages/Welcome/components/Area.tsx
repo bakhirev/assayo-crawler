@@ -1,7 +1,6 @@
 import React from 'react';
 
 import style from '../styles/area.module.scss';
-import { Link } from "react-router-dom";
 
 function getText(text?: string) {
   const [before, link, after] = (text || '').split('%');
@@ -42,6 +41,7 @@ function Area({
             accept="application/json"
             style={{ display: 'none' }}
             onChange={async (event: any) => {
+              console.log(event);
               console.log(onChange);
             }}
           />
@@ -49,13 +49,13 @@ function Area({
         {config.after}
         {' '}
         {example.before}
-        <Link
-          to={link || ''}
+        <a
+          href={link || ''}
           target="_blank"
           className={style.welcome_area_link}
         >
           {example.link}
-        </Link>
+        </a>
         {example.after}
       </p>
     </div>

@@ -25,6 +25,7 @@ async function createLogForRepository(folder, config, task) {
       : getLog(fileName)
     ),
   ]);
+
   const cantCreateLog = await applyBashCommand(commandForCreateLog);
   if (cantCreateLog) return ERROR.CREATE_FILE;
 

@@ -20,9 +20,11 @@ async function saveCommonLog(folders, task, config, repository) {
     if (cantRemoveFile) return ERROR.REMOVE_FILE;
   }
 
-  const commandForJoinFiles = joinFiles(files, file);
-  const cantJoinFiles = await applyBashCommand(commandForJoinFiles);
-  if (cantJoinFiles) return ERROR.CREATE_FILE;
+  if (files.length > 0) {
+    const commandForJoinFiles = joinFiles(files, file);
+    const cantJoinFiles = await applyBashCommand(commandForJoinFiles);
+    if (cantJoinFiles) return ERROR.CREATE_FILE;
+  }
 
   return false;
 }

@@ -1,36 +1,34 @@
-export function getStringsForParser(text: string) {
-  // @ts-ignore
-  let temp = window.report; // @ts-ignore
-  window.report = [];
-  const firstText = text.slice(0, 12);
-  if (firstText === 'report.push(') {
-    try {
-      eval(text);
-    } catch (e) {
-      // error(`Файл отчёта содержит запрещенный символ.\nОткройте его в редакторе и проверьте.\n${e.stack}`)
-      // @ts-ignore
-      window.report = temp;
-      return;
-    }
-  } else { // @ts-ignore
-    window.report = text.split('\n');
-  }
+function getConfigAndTasks(files: string[]) {
+  let config = null;
+  let tasks: any[] = [];
 
-  // @ts-ignore
-  return window.report;
+  (files || [])
+    .map((text: string) => {
+      try {
+        return JSON.parse(text);
+      } catch (e) {
+        return null;
+      }
+    })
+    .filter(json => json && typeof json === 'object')
+    .forEach((json) => {
+      if (Array.isArray(json)) {
+        tasks = tasks.concat(json);
+      } else if (json.code) {
+        tasks.push(json);
+      } else {
+        config = json;
+      }
+    });
+
+  return { config, tasks };
 }
 
 export async function getStringFromFileList(files: any) {
   const text: string[] = await Promise.all(
     files.map((file: any) => file.text()),
   );
-
-  return text
-    .filter(file => file)
-    .map((item: string) => ({ key: item.substring(13, 32), text: item }))
-    .sort((a: any, b: any) => (a.key || '').localeCompare(b.key || ''))
-    .map(item => item.text)
-    .join('\n');
+  return text.filter(file => file);
 }
 
 export function getOnDrop(setLoading: Function, onChange: Function) {
@@ -47,8 +45,14 @@ export function getOnDrop(setLoading: Function, onChange: Function) {
     if (!files.length) return;
 
     const text = await getStringFromFileList(files);
-    const report = getStringsForParser(text);
-    onChange('dump', report);
+
+    const { config, tasks } = getConfigAndTasks(text);
+    if (config) {
+      onChange('config', config);
+    }
+    if (tasks.length) {
+      onChange('tasks', tasks);
+    }
   };
 }
 
