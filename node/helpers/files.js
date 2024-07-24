@@ -11,8 +11,13 @@ function isExists(path) {
 
 function createFolder(path) {
   if (!path) return false;
+
   const newPath = `./${path}`;
-  if (isExists(newPath)) return false;
+  if (isExists(newPath)) {
+    log.debug(`folder ${newPath} already exist`);
+    return false;
+  }
+
   try {
     log.debug(`create folder ${newPath}`);
     fs.mkdirSync(newPath, { recursive: true });
@@ -20,6 +25,7 @@ function createFolder(path) {
     log.error('cant create folder');
     return 'Cant create folder';
   }
+
   return false;
 }
 

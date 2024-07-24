@@ -32,6 +32,33 @@ router.get('/api/v1.0/start', async (ctx, next) => {
   next();
 });
 
+router.get('/api/v1.0/stop', async (ctx, next) => {
+  const t = getTranslation(ctx);
+  const status = app?.crawler?.pause();
+  if (status) {
+    sendResponse(ctx, 200, t('stop.stopped'));
+  } else if (app.crawler) {
+    sendResponse(ctx, 503, t('stop.already'));
+  } else {
+    sendResponse(ctx, 503, t('stop.notFound'));
+  }
+  next();
+});
+
+router.get('/api/v1.0/restart', async (ctx, next) => {
+  const t = getTranslation(ctx);
+  const status = app?.crawler?.restart();
+  if (status) {
+    sendResponse(ctx, 200, t('restart.restarted'));
+  } else if (app.crawler) {
+    // TODO: ситуация абсурд
+    sendResponse(ctx, 503, t('start.already'));
+  } else {
+    sendResponse(ctx, 503, t('start.notFound'));
+  }
+  next();
+});
+
 router.post('/api/v1.0/update/configs', async (ctx, next) => {
   const t = getTranslation(ctx);
   if (app.updateConfig(ctx.request.body)) {

@@ -13,8 +13,20 @@ class Main {
     this.config.merge(defaultApplicationConfig);
     this.config.load().then(() => {
       this.crawler = new Crawler(this.config.get());
-      this.crawler.start();
+      this.crawler.restart();
     });
+  }
+
+  start() {
+    return this.crawler.start();
+  }
+
+  pause() {
+    return this.crawler.pause();
+  }
+
+  restart() {
+    return this.crawler.restart();
   }
 
   updateConfig(json) {
@@ -30,18 +42,12 @@ class Main {
   updateTasks(json) {
     if (!this.config.get()?.canUpdateTasksFromUI) return false;
     this.crawler.tasks.update(json);
-    this.crawler.start();
+    this.crawler.restart();
     return true;
   }
 
   getProgress() {
-    if (this.crawler.isProcessing) {
-      const title = this.crawler.progress.title;
-      const percent = this.crawler.progress.getInPercent();
-      return { status: 'processing', percent, title };
-    } else {
-      return { status: 'waiting' };
-    }
+    return this.crawler.getStatus();
   }
 }
 

@@ -17,13 +17,17 @@ export default {
       body: JSON.stringify(json)
     });
   },
-  getProgress(): Promise<any> {
-    // return Promise.resolve({ percent: Math.random() * 100, title: 'sa' });
+  getProgress(): Promise<{ progressInPercent: number, title: string, status: string }> {
     return fetch('/api/v1.0/get/progress')
       .then((response) => response?.json());
   },
   start(): Promise<any> {
-    // return Promise.resolve();
     return fetch('/api/v1.0/start');
+  },
+  stop(): Promise<any> {
+    return fetch('/api/v1.0/stop');
+  },
+  restart(): Promise<any> {
+    return fetch('/api/v1.0/restart');
   },
 };

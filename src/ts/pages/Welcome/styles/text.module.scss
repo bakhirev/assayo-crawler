@@ -1,0 +1,42 @@
+@import 'src/styles/variables';
+
+.welcome_text {
+  &_l,
+  &_m {
+    font-weight: 100;
+    font-size: var(--font-m);
+    font-family: Arial, Verdana, sans-serif;
+
+    display: block;
+
+    line-height: 1.5;
+    text-decoration: none;
+    vertical-align: top;
+    white-space: normal;
+    color: #73809F;
+  }
+
+  &_l {
+    font-size: 24px;
+    color: var(--color-black);
+  }
+
+  &_link {
+    cursor: pointer;
+    text-decoration: underline;
+    color: var(--color-button);
+
+    &:hover {
+      text-decoration: none;
+    }
+  }
+}
+
+@media (max-width: 800px) {
+  .welcome_text {
+    &_xl,
+    &_l {
+      font-size: var(--font-l);
+    }
+  }
+}

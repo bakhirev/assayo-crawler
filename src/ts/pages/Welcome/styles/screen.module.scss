@@ -1,0 +1,24 @@
+@import 'src/styles/variables';
+
+.welcome_screen {
+  display: block;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  white-space: nowrap;
+
+  &_wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: calc(100vw - 20px);
+    min-height: 100vh;
+    padding: 0;
+    margin: 0;
+
+    box-sizing: border-box;
+    text-align: center;
+  }
+}

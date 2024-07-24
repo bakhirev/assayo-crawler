@@ -1,32 +1,25 @@
-const {
-  createLogForRepository,
-  fetchAndUpdateBranch,
-  downloadRepository,
-  saveCommonLog,
-  removeFolders
-} = require('../bash');
-const Errors = require('../Errors');
 const log = require('../Logger')('Crawler');
 const Tasks = require('../Tasks');
-const { createFolder, getFolderNameByUrl } = require('../../helpers/files');
+const { createFolder } = require('../../helpers/files');
 const defaultTasks = require("../../configs/tasks.json");
 
-const Progress = require('./Progress');
+const Queue = require('./Queue');
+
+const STATUS = {
+  PROCESSING: 1,
+  PAUSE: 2,
+  WAITING: 3,
+}
 
 class Crawler {
   constructor(config) {
     this.config = config;
-    this.isProcessing = false;
-    this.isStopped = false;
-    this.errors = new Errors();
-    this.progress = new Progress();
+    this.status = STATUS.WAITING;
+    this.errors = [];
+    this.queue = null;
     this.tasks = new Tasks();
     this.tasks.update(defaultTasks);
     this.createFolders();
-  }
-
-  stop() {
-    this.isStopped = true;
   }
 
   createFolders() {
@@ -39,121 +32,67 @@ class Crawler {
     }
   }
 
-  async start() {
-    if (this.isProcessing) return false;
-
-    this.progress.start(this.tasks.get());
-    this.tasks
-      .load(this.config.loadTasksFromUrl)
-      .then(() => {
-        this.applyTasks();
-      });
-
+  start() {
+    if (this.status === STATUS.PROCESSING) return false;
+    this.status = STATUS.PROCESSING;
+    log.info('Processing was started.');
+    this._runProcessing();
     return true;
   }
 
-  async applyTasks() {
-    this.isProcessing = true;
-    log.info(`Tasks processing has been started.`);
-
-    const config = this.config;
-    const tasks = this.tasks.get();
-
-    for (let i = 0, l = tasks.length; i < l; i+= 1) {
-      const task = tasks[i];
-
-      log.info(`Task #${task?.code} (${i + 1} / ${l || 0}) has been started.`);
-
-      if (typeof task.status === 'number' && task.status !== 1) {
-        log.warning(`Task "status" is not 1 (ready to parse).`);
-        continue;
-      }
-
-      if (!task.code) {
-        log.warning(`Task have not "code" for save result.`);
-        continue;
-      }
-
-      if (!task.repositories?.length) {
-        log.warning(`Task have not "repositories" for processing.`);
-        continue;
-      }
-
-      if (this.isStopped) return;
-      await this.applyTask(task, config);
-    }
-
-    log.info(`Tasks processing has been ended. Logs has been updated.`);
-    this.progress.update();
-    this.isProcessing = false;
+  pause() {
+    if (this.status !== STATUS.PROCESSING) return false;
+    this.status = STATUS.PAUSE;
+    log.info('Processing was stopped.');
+    return true;
   }
 
-  async applyTask(task, config) {
-    let errorMessage = '';
-    const folders = [];
-    const foldersForRemove = [];
+  restart() {
+    if (this.status !== STATUS.WAITING) return false;
+    this.status = STATUS.PROCESSING;
+    log.info('Processing was restarted.');
+    this._updateQueue();
+    this._runProcessing();
+    return true;
+  }
 
-    for (let i = 0, l = task.repositories.length; i < l; i+= 1) {
-      const repository = task.repositories[i];
-      const parentFolder = repository.folder
-        ? `./input/${config.input.folder}/${repository.folder}`
-        : `./input/${config.input.folder}`;
-      const folder = `${parentFolder}/${getFolderNameByUrl(repository.url)}`;
+  _updateQueue() {
+    const tasks = this.tasks.get();
+    this.queue = new Queue(tasks);
+  }
 
-      this.progress.update(`${task.code} | ${repository.url}`);
-      log.info(`Repository processing has been started (${i + 1} / ${l}).`);
-      log.debug(`URL: ${repository.url}`);
+  _clearErrors() {
+    if (!this.queue?.stepIndex) {
+      this.errors = [];
+    }
+  }
 
-      if (this.isStopped) return;
-      errorMessage = createFolder(parentFolder);
-      if (errorMessage) {
-        this.errors.push(errorMessage);
-        continue;
-      }
+  async _runProcessing() {
+    this._clearErrors()
+    while (!this.queue.isEnd && this.status === STATUS.PROCESSING) {
+      await this.queue.next(this.config, this.errors);
+    }
+    if (this.status === STATUS.PROCESSING) {
+      log.info('Processing was finished. Waiting a trigger for start.');
+      this._updateQueue();
+      this.status = STATUS.WAITING;
+    }
+  }
 
-      if (this.isStopped) return;
-      errorMessage = await downloadRepository(parentFolder, folder, config, repository);
-      if (errorMessage) {
-        this.errors.push(errorMessage);
-        continue;
-      }
+  getStatus() {
+    const queue = this.queue;
+    const step = queue.steps[queue.stepIndex];
+    const progressInPercent = Math.ceil(100 * queue.stepIndex / queue.steps.length);
 
-      const needClearAfterUse = config.input.needClearAfterUse
-        || task.needClearAfterUse
-        || repository.needClearAfterUse;
-
-      if (needClearAfterUse) {
-        foldersForRemove.push(folder);
-      }
-
-      if (this.isStopped) return;
-      errorMessage = await fetchAndUpdateBranch(folder, config, repository);
-      if (errorMessage) {
-        this.errors.push(errorMessage);
-      }
-
-      if (this.isStopped) return;
-      errorMessage = await createLogForRepository(folder, config, task);
-      if (errorMessage) {
-        this.errors.push(errorMessage);
-        continue;
-      }
-
-      folders.push(folder);
+    const title = [step?.task?.code];
+    if (step?.task?.repository?.url) {
+      title.push(step?.task?.repository?.url);
     }
 
-    log.info(`Creating common log file has been started.`);
-
-    if (this.isStopped) return;
-    errorMessage = await saveCommonLog(folders, task, config, task.repositories);
-    if (errorMessage) {
-      this.errors.push(errorMessage);
-    }
-
-    if (this.isStopped) return;
-    errorMessage = await removeFolders(folders, foldersForRemove, task);
-    if (errorMessage) {
-      this.errors.push(...errorMessage);
+    return {
+      status: this.status,
+      title: title.join(' | '),
+      progressInPercent,
     }
   }
 }

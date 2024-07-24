@@ -1,0 +1,29 @@
+[
+  {
+    "code": "test_project",
+    "folder": "some_folder",
+    "status": 1,
+    "repositories": [
+      {
+        "url": "https://github.com/bakhirev/assayo.git",
+        "needClearAfterUse": false
+      },
+      {
+        "folder": "backend",
+        "url": "https://github.com/bakhirev/html-game.git"
+      },
+      {
+        "url": "https://github.com/bakhirev/lab_scp.git"
+      }
+    ]
+  },
+  {
+    "code": "frontend",
+    "status": 1,
+    "repositories": [
+      {
+        "url": "https://github.com/bakhirev/lab_scp.git"
+      }
+    ]
+  }
+]

@@ -1,0 +1,52 @@
+@import 'src/styles/variables';
+
+.welcome_player {
+  --temp-buttons: 74px;
+
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1;
+
+  display: block;
+  width: 100%;
+  margin: 0 auto;
+  padding: var(--space-xs);
+  white-space: nowrap;
+  vertical-align: top;
+
+  border-bottom: 1px solid var(--color-border);
+  box-shadow: 0 0 var(--space-xs) var(--color-border);
+  background-color: rgba(255, 255, 255, 0.7);
+
+  &_buttons {
+    display: inline-block;
+    width: var(--temp-buttons);
+    margin: 0;
+    vertical-align: top;
+  }
+
+  &_progress {
+    display: inline-block;
+    width: calc(100% - var(--temp-buttons) - var(--space-xxl));
+    margin: 0 0 0 var(--space-xxl);
+    padding: var(--space-xs) 0 0 0;
+    vertical-align: top;
+  }
+
+  &_description {
+    font-size: var(--font-s);
+    font-family: Arial, Verdana, sans-serif;
+    display: block;
+
+    line-height: 1.5;
+    text-decoration: none;
+    vertical-align: top;
+    text-align: left;
+    overflow: hidden;
+    text-overflow: ellipsis;
+
+    color: #73809F;
+  }
+}

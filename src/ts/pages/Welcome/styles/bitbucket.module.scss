@@ -1,0 +1,63 @@
+@import 'src/styles/variables';
+
+.welcome_bitbucket {
+  display: block;
+  width: 90%;
+  max-width: 900px;
+  padding: 0;
+  margin: 0 auto var(--space-xxl);
+
+  white-space: nowrap;
+
+  &_left,
+  &_right {
+    display: inline-block;
+    padding: var(--space-xxl);
+    margin: 0 auto;
+
+    box-sizing: border-box;
+    white-space: normal;
+    vertical-align: middle;
+  }
+
+  &_left {
+    width: 50%;
+  }
+
+  &_right {
+    width: 50%;
+    text-align: left;
+  }
+
+  &_icon {
+    display: block;
+    width: 100%;
+    margin: 0 auto;
+  }
+
+  &_list {
+    display: block;
+    padding: 0;
+    margin: 0;
+    list-style-type: none;
+
+    &_item {
+      position: relative;
+      display: block;
+      padding: 0 0 0 var(--space-xxl);
+      box-sizing: border-box;
+
+      &:before {
+        position: absolute;
+        top: 0;
+        left: 0;
+        content: '—';
+      }
+    }
+  }
+
+  &_console {
+    max-width: 800px;
+    margin: 32px auto var(--space-xxl);
+  }
+}
