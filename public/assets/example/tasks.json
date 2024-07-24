@@ -6,7 +6,7 @@
     "repositories": [
       {
         "url": "https://github.com/bakhirev/assayo.git",
-        "needClearAfterUse": false
+        "needRemoveAfterUse": false
       },
       {
         "folder": "backend",

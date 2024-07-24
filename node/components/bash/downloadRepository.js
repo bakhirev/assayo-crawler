@@ -8,12 +8,12 @@ const {
 } = require('./bashCommands');
 
 async function downloadRepository(parent, folder, config, repository) {
-  const needClearAfterUse = repository.needClearAfterUse
-    ?? config.input.needClearAfterUse
+  const needRemoveAfterUse = repository.needRemoveAfterUse
+    ?? config.input.needRemoveAfterUse
     ?? false;
 
   if (isExists(folder)) {
-    if (!needClearAfterUse) return false;
+    if (!needRemoveAfterUse) return false;
     const commandForRemove = removeFolder(folder);
     const folderIsNotRemoved = await applyBashCommand(commandForRemove);
     if (folderIsNotRemoved) return ERROR.REMOVE_FOLDER;

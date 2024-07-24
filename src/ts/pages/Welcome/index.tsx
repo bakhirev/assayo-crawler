@@ -51,7 +51,7 @@ function Welcome() {
           Работа ведется в нескольких репозиториях?
         </h2>
         <p className={`${style.welcome_description} ${textStyle.welcome_text_m}`}>
-          Импорт списка репозиториев из Bitbucket
+          Импорт списка репозиториев из вашей системы
         </p>
         <Bitbucket/>
       </Screen>

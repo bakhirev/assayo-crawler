@@ -5,12 +5,14 @@ import notifications from 'ts/components/Notifications/store';
 import ProgressBar from 'ts/components/ProgressBar';
 import settingsApi from 'ts/api/settings';
 
+import getProgressTitleByStatus from '../helpers/getProgressTitleByStatus';
 import style from '../styles/player.module.scss';
 
 enum STATUS {
   PROCESSING = 1,
   PAUSE = 2,
   WAITING = 3,
+  RESTART = 4,
 }
 
 function Player() {
@@ -19,24 +21,17 @@ function Player() {
   const [description, setDescription] = useState<string>('');
 
   useEffect(() => {
-    async function updateStatus() {
+    async function fetchStatus() {
       const response = await settingsApi.getProgress();
       setPercent(response?.progressInPercent ?? null);
+      setDescription(getProgressTitleByStatus(response));
 
-      const title = response?.title
-        ? `| ${response?.progressInPercent || 0}% | ${response?.title}`
-        : '| ожидание запуска';
-      setDescription(title);
-
-      let newStatus: any = response?.status;
-      if (!newStatus) {
-        newStatus = response?.progressInPercent ? STATUS.PROCESSING : STATUS.WAITING;
-      }
-      setStatus(newStatus);
+      const defaultStatus = response?.progressInPercent ? STATUS.PROCESSING : STATUS.WAITING;
+      setStatus(response?.status || defaultStatus);
     }
 
-    const timer = setInterval(updateStatus, 5000);
-    updateStatus();
+    const timer = setInterval(fetchStatus, 1000);
+    fetchStatus();
 
     return () => {
       clearInterval(timer);
@@ -49,7 +44,7 @@ function Player() {
         <UiKitButton
           mode="second"
           onClick={() => {
-            if (status === STATUS.PROCESSING) {
+            if (status === STATUS.PROCESSING || status === STATUS.RESTART) {
               settingsApi.stop().finally(() => {
                 notifications.show('Сервис остановлен.');
               });
@@ -60,17 +55,31 @@ function Player() {
             }
           }}
         >
-          {status === STATUS.PROCESSING ? '||' : '>'}
+          <img
+            alt="Play or pause icon"
+            src={status === STATUS.PROCESSING || status === STATUS.RESTART
+              ? './assets/player/pause.svg'
+              : './assets/player/play.svg'}
+            className={style.welcome_player_icon}
+          />
         </UiKitButton>
         <UiKitButton
           mode="second"
+          disabled={status === STATUS.WAITING || status === STATUS.RESTART}
           onClick={() => {
             settingsApi.restart().finally(() => {
+              setPercent(0);
+              setDescription('');
+              setStatus(STATUS.RESTART);
               notifications.show('Сервис перезапущен.');
             });
           }}
         >
-          {'o'}
+          <img
+            alt="Replay icon"
+            src="./assets/player/replay.svg"
+            className={style.welcome_player_icon}
+          />
         </UiKitButton>
       </div>
       <div className={style.welcome_player_progress}>

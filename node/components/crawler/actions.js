@@ -88,11 +88,11 @@ const methods = {
 
   setFlagsForRepository(step, config) {
     const folder = step.meta.folder;
-    const needClearAfterUse = config.input.needClearAfterUse
-      || step.task.needClearAfterUse
-      || step.repository.needClearAfterUse;
+    const needRemoveAfterUse = config.input.needRemoveAfterUse
+      || step.task.needRemoveAfterUse
+      || step.repository.needRemoveAfterUse;
 
-    if (needClearAfterUse) {
+    if (needRemoveAfterUse) {
       step.foldersForRemove.push(folder);
     }
   },

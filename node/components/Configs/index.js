@@ -32,7 +32,7 @@ class Configs {
       input: {
         folder: env?.INPUT_FOLDER,
         needCreateAfterInit: env?.INPUT_NEED_CREATE_AFTER_INIT,
-        needClearAfterUse: env?.INPUT_NEED_CLEAR_AFTER_USE,
+        needRemoveAfterUse: env?.INPUT_NEED_CLEAR_AFTER_USE,
       }
     };
     return this;
@@ -64,7 +64,7 @@ class Configs {
       input: {
         folder: json?.input?.folder ?? this.config?.input?.folder,
         needCreateAfterInit: json?.input?.needCreateAfterInit ?? this.config?.input?.needCreateAfterInit,
-        needClearAfterUse: json?.input?.needClearAfterUse ?? this.config?.input?.needClearAfterUse,
+        needRemoveAfterUse: json?.input?.needRemoveAfterUse ?? this.config?.input?.needRemoveAfterUse,
       }
     };
     return this;

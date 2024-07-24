@@ -53,6 +53,7 @@ function Area({
           href={link || ''}
           target="_blank"
           className={style.welcome_area_link}
+rel="noreferrer"
         >
           {example.link}
         </a>

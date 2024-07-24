@@ -63,7 +63,7 @@ class Tasks {
     return {
       url: json?.url,
       folder: json?.folder,
-      needClearAfterUse: !!json?.needClearAfterUse
+      needRemoveAfterUse: !!json?.needRemoveAfterUse
     };
   }
 

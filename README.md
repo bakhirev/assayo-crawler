@@ -94,7 +94,7 @@
 | `output.needCreateAfterInit` | `boolean`    | `true`                | Нужно создать эту папку в момент инициализации приложения.               |
 | `input.folder`               | `string`     | `"repositories"`      | Папка, в которую будут загружаться репизитории указанные в списке задач. |
 | `input.needCreateAfterInit`  | `boolean`    | `true`                | Нужно создать эту папку в момент инициализации приложения.               |
-| `input.needClearAfterUse`    | `boolean`    | `false`               | Нужно очищать эту папку каждый раз после завершения сбора логов.         |
+| `input.needRemoveAfterUse`    | `boolean`    | `false`               | Нужно очищать эту папку каждый раз после завершения сбора логов.         |
 
 <a name="link-"></a>
 #### Переменные окружения
@@ -136,7 +136,7 @@
 | `repositories[]`                   | `object[]`   | да           | Список репозиториев для обработки.                                                                                                |
 | `repositories[].url`               | `string`     | да           | URL-адрес для загрузки репозитория.                                                                                               |
 | `repositories[].folder`            | `string`     | нет          | Дочерняя папка, в которую нужно поместить репозиторий.                                                                            |
-| `repositories[].needClearAfterUse` | `boolean`    | нет          | Нужно очищать эту папку каждый раз после завершения сбора логов.                                                                  |
+| `repositories[].needRemoveAfterUse` | `boolean`    | нет          | Нужно очищать эту папку каждый раз после завершения сбора логов.                                                                  |
 
 ### API
 

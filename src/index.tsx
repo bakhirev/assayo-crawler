@@ -1,5 +1,5 @@
 import React from 'react';
-import { render } from 'react-dom';
+import { createRoot } from 'react-dom/client';
 import { HashRouter } from 'react-router-dom';
 
 import localization from 'ts/helpers/Localization';
@@ -38,15 +38,15 @@ localization.parse('ru', ru);
 localization.parse('zh', zh);
 
 function renderReactApplication() {
-  render(
+  const container = document.getElementById('root');
+  const root = createRoot(container as HTMLElement);
+  root.render(
     <React.StrictMode>
       <HashRouter>
         <Main />
         <Notifications/>
       </HashRouter>
-    </React.StrictMode>,
-    document.getElementById('root'),
-  );
+    </React.StrictMode>);
 }
 
 applyUrlCommands((parameters: any) => {

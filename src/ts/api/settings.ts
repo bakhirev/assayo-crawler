@@ -1,23 +1,25 @@
+import IStatus from 'ts/interfaces/Status';
+
 export default {
   updateSettings(json: any): Promise<any> {
     return fetch('/api/v1.0/update/configs', {
       method: 'POST',
       headers: {
-        'Content-Type': 'application/json;charset=utf-8'
+        'Content-Type': 'application/json;charset=utf-8',
       },
-      body: JSON.stringify(json)
+      body: JSON.stringify(json),
     });
   },
   updateTasks(json: any): Promise<any> {
     return fetch('/api/v1.0/update/tasks', {
       method: 'POST',
       headers: {
-        'Content-Type': 'application/json;charset=utf-8'
+        'Content-Type': 'application/json;charset=utf-8',
       },
-      body: JSON.stringify(json)
+      body: JSON.stringify(json),
     });
   },
-  getProgress(): Promise<{ progressInPercent: number, title: string, status: string }> {
+  getProgress(): Promise<IStatus> {
     return fetch('/api/v1.0/get/progress')
       .then((response) => response?.json());
   },

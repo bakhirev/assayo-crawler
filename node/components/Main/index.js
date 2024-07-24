@@ -13,7 +13,7 @@ class Main {
     this.config.merge(defaultApplicationConfig);
     this.config.load().then(() => {
       this.crawler = new Crawler(this.config.get());
-      this.crawler.restart();
+      this.crawler.start();
     });
   }
 
@@ -32,7 +32,7 @@ class Main {
   updateConfig(json) {
     if (!this.config.get()?.canUpdateConfigFromUI) return false;
     this.config.merge(json).load().then(() => {
-      this.crawler.stop();
+      this.crawler.pause();
       this.crawler = new Crawler(this.config.get());
       this.crawler.start();
     });

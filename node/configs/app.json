@@ -8,6 +8,6 @@
   "input": {
     "folder": "repositories",
     "needCreateAfterInit": true,
-    "needClearAfterUse": false
+    "needRemoveAfterUse": false
   }
 }

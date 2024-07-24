@@ -3,12 +3,14 @@ const Tasks = require('../Tasks');
 const { createFolder } = require('../../helpers/files');
 const defaultTasks = require("../../configs/tasks.json");
 
+const Statistic = require('./Statistic');
 const Queue = require('./Queue');
 
 const STATUS = {
   PROCESSING: 1,
   PAUSE: 2,
   WAITING: 3,
+  RESTART: 4,
 }
 
 class Crawler {
@@ -18,6 +20,7 @@ class Crawler {
     this.errors = [];
     this.queue = null;
     this.tasks = new Tasks();
+    this.statistic = new Statistic();
     this.tasks.update(defaultTasks);
     this.createFolders();
   }
@@ -33,9 +36,10 @@ class Crawler {
   }
 
   start() {
-    if (this.status === STATUS.PROCESSING) return false;
+    if (this.status === STATUS.PROCESSING || this.status === STATUS.RESTART) return false;
     this.status = STATUS.PROCESSING;
     log.info('Processing was started.');
+    if (!this.queue) this._updateQueue();
     this._runProcessing();
     return true;
   }
@@ -48,11 +52,15 @@ class Crawler {
   }
 
   restart() {
-    if (this.status !== STATUS.WAITING) return false;
-    this.status = STATUS.PROCESSING;
+    if (this.status === STATUS.RESTART) return false;
+    if (this.status === STATUS.WAITING) return this.start();
+
     log.info('Processing was restarted.');
-    this._updateQueue();
-    this._runProcessing();
+    if (this.status === STATUS.PAUSE) {
+      this._updateQueue();
+      return this.start();
+    }
+    this.status = STATUS.RESTART;
     return true;
   }
 
@@ -68,31 +76,43 @@ class Crawler {
   }
 
   async _runProcessing() {
-    this._clearErrors()
+    this._clearErrors();
+    this.statistic.start();
     while (!this.queue.isEnd && this.status === STATUS.PROCESSING) {
       await this.queue.next(this.config, this.errors);
     }
     if (this.status === STATUS.PROCESSING) {
       log.info('Processing was finished. Waiting a trigger for start.');
+      this.statistic.end();
       this._updateQueue();
       this.status = STATUS.WAITING;
+    } else if (this.status === STATUS.RESTART) {
+      this._updateQueue();
+      this.status = STATUS.PAUSE;
+      setTimeout(() => this.start());
     }
   }
 
   getStatus() {
     const queue = this.queue;
+    if (!queue) {
+      return {
+        status: this.status,
+        progressInPercent: 0,
+        ...this.statistic.get(),
+      };
+    }
+
     const step = queue.steps[queue.stepIndex];
     const progressInPercent = Math.ceil(100 * queue.stepIndex / queue.steps.length);
 
-    const title = [step?.task?.code];
-    if (step?.task?.repository?.url) {
-      title.push(step?.task?.repository?.url);
-    }
-
     return {
       status: this.status,
-      title: title.join(' | '),
+      task: step?.task?.code || null,
+      repository: step?.repository?.url || null,
+      phase: step?.id || null,
       progressInPercent,
+      ...this.statistic.get(),
     }
   }
 }

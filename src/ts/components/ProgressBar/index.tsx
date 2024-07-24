@@ -18,13 +18,13 @@ function ProgressBar({
 
   useEffect(() => {
     const today = (new Date()).getTime();
-    let speed = (today - prevTime) * 0.9 / 1000;
-    if (speed < 1) speed = 1;
-    if (speed > 20) speed = 20;
-    if (hasPercent && (percent < 10 || percent > 90)) speed = 4;
+    let newSpeed = (today - prevTime) * 0.9 / 1000;
+    if (newSpeed < 1) newSpeed = 1;
+    if (newSpeed > 20) newSpeed = 20;
+    if (hasPercent && (percent < 10 || percent > 90)) newSpeed = 2;
 
     setPrevTime(today);
-    setSpeed(speed);
+    setSpeed(newSpeed);
   }, [percent]);
 
   return (
