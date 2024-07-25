@@ -1,6 +1,6 @@
 # [Assayo](https://assayo.online/?ref=github-crawler&lang=ru)
 
-В этом репозитории находится вспомогательный модуль приложения для визуализации и анализа лог файлов git`а.
+Вспомогательный модуль приложения для визуализации и анализа лог файлов git`а ([demo](https://assayo.online/demo/?ref=github&dump=./test.txt), [install](https://assayo.online/demo/?ref=github), [docker](https://hub.docker.com/r/bakhirev/assayo), [reddit](https://www.reddit.com/r/ITManagers/comments/1e5k291/the_visualization_and_analysis_of_git_commit/), [habr](https://habr.com/ru/articles/763342/)).
 
 **Цель модуля:** автоматический сбор и объединение log файлов git`а.
 
@@ -79,7 +79,7 @@
 3. Из файла.
 
 <a name="link-"></a>
-#### Файл в папке ```src/configs/app.json``` (пример заполнения ```src/configs/example/app.json```)
+#### Файл в папке ```src/configs/app.json``` (пример заполнения ```public/assets/example/app.json```)
 
 | Свойство                     | Тип значения | Значение по умолчание | Описание                                                                 |
 |------------------------------|--------------|-----------------------|--------------------------------------------------------------------------|
@@ -124,7 +124,7 @@
 | `INPUT_NEED_CLEAR_AFTER_USE`    | `boolean`            | `false`               | Нужно очищать эту папку каждый раз после завершения сбора логов.         |
 
 <a name="link-"></a>
-### Настройки списка задач
+### Настройка списка задач
 
 Список задач может быть получен сразу из нескольких источников. Приоритет выбора окончательного значения:
 
@@ -132,7 +132,7 @@
 2. Из файла.
 
 <a name="link-3"></a>
-#### Файл в папке ```src/configs/reports.json``` (пример заполнения ```src/configs/example/reports.json```)
+#### Файл в папке ```src/configs/reports.json``` (пример заполнения ```public/assets/example/reports.json```)
 
 | Свойство                            | Тип значения | Обязательный | Описание                                                                                                                          |
 |-------------------------------------|--------------|--------------|-----------------------------------------------------------------------------------------------------------------------------------|
@@ -156,7 +156,8 @@
 | `GET`  | `/check`                   | `{ message: string }` | Получить текущий статус приложения (health check) |
 
 
-#### Как обновить Docker контейнер?
+### Как обновить?
+#### Docker контейнер
 - run ```npm run build```
 - run ```docker build -t assayo-crawler .```
 - visually check the image ```docker run --name assayo-crawler -p 80:80 --mount type=bind,source=/c/work/assayo-crawler/node/input,destination=/usr/src/assayo_crawler/input --mount type=bind,source=/c/work/assayo-crawler/node/output,destination=/usr/src/assayo_crawler/output -d assayo-crawler```;
