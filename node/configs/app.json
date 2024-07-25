@@ -1,6 +1,6 @@
 {
   "canUpdateConfigFromUI": true,
-  "canUpdateTasksFromUI": true,
+  "canUpdateReportsFromUI": true,
   "output": {
     "folder": "logs",
     "needCreateAfterInit": true

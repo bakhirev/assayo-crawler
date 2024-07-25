@@ -1,7 +1,7 @@
 const log = require('../Logger')('Crawler');
-const Tasks = require('../Tasks');
+const Reports = require('../Reports');
 const { createFolder } = require('../../helpers/files');
-const defaultTasks = require("../../configs/tasks.json");
+const defaultReports = require("../../configs/reports.json");
 
 const Statistic = require('./Statistic');
 const Queue = require('./Queue');
@@ -19,9 +19,9 @@ class Crawler {
     this.status = STATUS.WAITING;
     this.errors = [];
     this.queue = null;
-    this.tasks = new Tasks();
+    this.reports = new Reports();
     this.statistic = new Statistic();
-    this.tasks.update(defaultTasks);
+    this.reports.update(defaultReports);
     this.createFolders();
   }
 
@@ -65,8 +65,8 @@ class Crawler {
   }
 
   _updateQueue() {
-    const tasks = this.tasks.get();
-    this.queue = new Queue(tasks);
+    const reports = this.reports.get();
+    this.queue = new Queue(reports);
   }
 
   _clearErrors() {
@@ -108,7 +108,7 @@ class Crawler {
 
     return {
       status: this.status,
-      task: step?.task?.code || null,
+      report: step?.report?.code || null,
       repository: step?.repository?.url || null,
       phase: step?.id || null,
       progressInPercent,

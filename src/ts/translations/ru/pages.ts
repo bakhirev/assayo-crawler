@@ -30,13 +30,13 @@ export default `
 § page.team.author.types: Тип работ
 § page.team.author.commits: Коммитов
 § page.team.author.commitsSmall: коммитов
-§ page.team.author.tasks: Задач
-§ page.team.author.tasksSmall: задач
+§ page.team.author.reports: Задач
+§ page.team.author.reportsSmall: задач
 § page.team.author.workedLosses: Дни с коммитами и без
 § page.team.author.worked: работа
 § page.team.author.losses: дни без коммитов
 § page.team.author.days: дней
-§ page.team.author.daysForTask: Дней на задачу
+§ page.team.author.daysForReport: Дней на задачу
 § page.team.author.scopes: Фич
 § page.team.author.moneyAll: Получил
 § page.team.author.moneyWorked: Отработал
@@ -52,7 +52,7 @@ export default `
 § page.team.scope.scope: Фича
 § page.team.scope.days: Раб. дней
 § page.team.scope.authorsDays: Человеко-дней
-§ page.team.scope.tasks: Задач
+§ page.team.scope.reports: Задач
 § page.team.scope.commits: Коммитов
 § page.team.scope.commitsSmall: коммитов
 § page.team.scope.types: Тип работ
@@ -61,8 +61,8 @@ export default `
 § page.team.type.title: Статистика по типам задач
 § page.team.type.description: *Персональный вклад* считается по количеству коммитов, а не объему измененных строк или файлов. Поэтому следует так же смотреть раздел «Анализ файлов», чтобы оценить масштаб изменений.
 § page.team.type.type: Тип работы
-§ page.team.type.tasks: Задач
-§ page.team.type.tasksSmall: задач
+§ page.team.type.reports: Задач
+§ page.team.type.reportsSmall: задач
 § page.team.type.days: Дней
 § page.team.type.daysSmall: дней
 § page.team.type.authorsDays: Человеко-дней
@@ -111,7 +111,7 @@ export default `
 § page.team.day.activity: Активность
 § page.team.week.title: Статистика по неделям
 § page.team.week.date: Дата
-§ page.team.week.numberTasks: Количество задач
+§ page.team.week.numberReports: Количество задач
 § page.team.week.people: Количество человек
 § page.team.week.line: Изменение строк
 § page.team.week.days: Дни с коммитами и без
@@ -122,9 +122,9 @@ export default `
 § page.team.week.hasCommits: были коммиты
 § page.team.week.hasNotCommits: небыло коммитов
 § page.team.week.days: дней
-§ page.team.week.tasks: задач
-§ page.team.pr.task: Задача
-§ page.team.pr.tasks: задач
+§ page.team.week.reports: задач
+§ page.team.pr.report: Задача
+§ page.team.pr.reports: задач
 § page.team.pr.firstCommitTime: Первый коммит
 § page.team.pr.lastCommitTime: Последний
 § page.team.pr.workDays: Среднее время работы над задачей
@@ -145,22 +145,22 @@ export default `
 § page.team.pr.work: разработка
 § page.team.pr.delay: ожидание
 § page.team.pr.days: дней
-§ page.team.pr.oneTaskDays: Время потраченное на одну задачу
+§ page.team.pr.oneReportDays: Время потраченное на одну задачу
 § page.team.pr.description1: *Время разработки* это разница времени от первого до последнего коммита по задаче. Не важно были перерывы в несколько дней между коммитами или нет. Сам факт какого-либо коммита увеличивает время.
 § page.team.pr.description2: *Время ожидания* это время между последним коммитом и влитием кода. Оно показывает фактический простой в ожидании чего-либо.
 § page.team.pr.description3: *Зачем отображать время разработки* без разбивки на кодинг и код-ревью? Затем, чтобы показать бизнесу фактическое время поставки кода. Ожидание тестирования, замечания на ревью, проблемы DevOps и прочие несовершенства процесса, как раз уже заложены в этот срок.
 § page.team.pr.statByAuthors: Статистика по сотрудникам
 § page.team.pr.longDelay: Длительное ожидание влития
-§ page.team.tasks.task: Задача
-§ page.team.tasks.author: Автор первого коммита
-§ page.team.tasks.from: Первый коммит
-§ page.team.tasks.to: Последний коммит
-§ page.team.tasks.daysInWork: Дней в работе
-§ page.team.tasks.commits: Количество коммитов
-§ page.team.tasks.pr: Дата влития
-§ page.team.tasks.prAuthor: Влил
-§ page.team.tasks.prDelayDays: Дней ожидания влития
-§ page.team.tasks.comments: Комментарии
+§ page.team.reports.report: Задача
+§ page.team.reports.author: Автор первого коммита
+§ page.team.reports.from: Первый коммит
+§ page.team.reports.to: Последний коммит
+§ page.team.reports.daysInWork: Дней в работе
+§ page.team.reports.commits: Количество коммитов
+§ page.team.reports.pr: Дата влития
+§ page.team.reports.prAuthor: Влил
+§ page.team.reports.prDelayDays: Дней ожидания влития
+§ page.team.reports.comments: Комментарии
 § page.team.extension.extension: Расширения файлов
 § page.team.extension.type: Подтип файлов
 § page.team.extension.name: Тип
@@ -179,8 +179,8 @@ export default `
 § page.person.total.title: Основные характеристики
 § page.person.total.daysWorked.title: дней работы
 § page.person.total.daysWorked.description: Учтены только дни, в которые делались коммиты
-§ page.person.total.tasks.title: задач
-§ page.person.total.tasks.description: Если коммиты правильно подписаны
+§ page.person.total.reports.title: задач
+§ page.person.total.reports.description: Если коммиты правильно подписаны
 § page.person.character.title: Персонаж
 § page.person.achievement.title: Достижения
 § page.person.achievement.positive: Позитивные
@@ -191,8 +191,8 @@ export default `
 § page.person.gets.description: Медаль выдается, если пользователь первым оставляет коммит к задаче с  «красивым» номером.
 § page.person.business.days.title: дней работы
 § page.person.business.days.description: Учтены только дни, в которые делались коммиты
-§ page.person.business.tasks.title: задач
-§ page.person.business.tasks.description: Если коммиты правильно подписаны
+§ page.person.business.reports.title: задач
+§ page.person.business.reports.description: Если коммиты правильно подписаны
 § page.person.business.losses.title: дней без коммитов
 § page.person.business.losses.description: Все дни минус: праздники, выходные, отпуск, дни с коммитами
 § page.person.business.commits.title: коммитов
@@ -218,11 +218,11 @@ git может показать малое количество изменени
 § page.person.money.moneyWorked.description: Фактически отработанные дни умноженные на среднюю зп
 § page.person.money.moneyLosses.title: возможная переплата
 § page.person.money.moneyLosses.description: Дни без коммитов умноженные на среднюю зп
-§ page.person.money.tasks.title: задача
-§ page.person.money.tasks.description: Количество закрытых задач к стоимости дня
+§ page.person.money.reports.title: задача
+§ page.person.money.reports.description: Количество закрытых задач к стоимости дня
 § page.person.money.commits.title: коммит
 § page.person.money.commits.description: Количество коммитов к стоимости рабочего дня
-§ page.person.speed.task: Одна задача в среднем это
+§ page.person.speed.report: Одна задача в среднем это
 § page.person.speed.max: Максимальная скорость в день
 § page.person.speed.days.title: дней
 § page.person.speed.days.description: Имеются ввиду рабочие дни, если коммиты правильно подписаны
@@ -230,15 +230,15 @@ git может показать малое количество изменени
 § page.person.speed.commits.description: Отрезаны 10% максимальных и минимальных значений
 § page.person.speed.line.title: строк кода
 § page.person.speed.line.description: Отрезаны 10% максимальных и минимальных значений
-§ page.person.speed.tasks.title: задач
-§ page.person.speed.tasks.description: Задача может быть не доделана, но работа по ней должна быть
+§ page.person.speed.reports.title: задач
+§ page.person.speed.reports.description: Задача может быть не доделана, но работа по ней должна быть
 § page.person.speed.maxCommits.title: коммитов
 § page.person.speed.maxCommits.description: Задача может быть не доделана, но работа по ней должна быть
 § page.person.hours.title: Распределение коммитов в течении каждого дня недели
 § page.person.week.date: Дата
-§ page.person.week.tasks: Количество задач
+§ page.person.week.reports: Количество задач
 § page.person.week.workDays: Дни с коммитами
-§ page.person.week.taskInDay: Задач в день
+§ page.person.week.reportInDay: Задач в день
 § page.person.week.days: дней
 § page.person.week.workDay: будни
 § page.person.week.weekends: выходные

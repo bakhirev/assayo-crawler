@@ -16,12 +16,12 @@ class Configs {
         body: env?.LOAD_CONFIG_BODY,
       },
 
-      canUpdateTasksFromUI: env?.LOAD_TASKS_UI ?? true,
-      loadTasksFromUrl: {
-        url: env?.LOAD_TASKS_URL,
-        method: env?.LOAD_TASKS_METHOD,
-        headers: env?.LOAD_TASKS_HEADERS,
-        body: env?.LOAD_TASKS_BODY,
+      canUpdateReportsFromUI: env?.LOAD_REPORTS_UI ?? true,
+      loadReportsFromUrl: {
+        url: env?.LOAD_REPORTS_URL,
+        method: env?.LOAD_REPORTS_METHOD,
+        headers: env?.LOAD_REPORTS_HEADERS,
+        body: env?.LOAD_REPORTS_BODY,
       },
 
       output: {
@@ -40,7 +40,7 @@ class Configs {
 
   merge(json = {}) {
     this.config = {
-      canUpdateConfigFromUI: json?.canUpdateTasksFromUI ?? this.config?.canUpdateTasksFromUI,
+      canUpdateConfigFromUI: json?.canUpdateReportsFromUI ?? this.config?.canUpdateReportsFromUI,
       loadConfigFromUrl: {
         url: json?.loadConfigFromUrl?.url ?? this.config?.loadConfigFromUrl?.url,
         method: json?.loadConfigFromUrl?.method ?? this.config?.loadConfigFromUrl?.method,
@@ -48,12 +48,12 @@ class Configs {
         body: json?.loadConfigFromUrl?.body ?? this.config?.loadConfigFromUrl?.body,
       },
 
-      canUpdateTasksFromUI: json?.canUpdateTasksFromUI ?? this.config?.canUpdateTasksFromUI,
-      loadTasksFromUrl: {
-        url: json?.loadTasksFromUrl?.url ?? this.config?.loadTasksFromUrl?.url,
-        method: json?.loadTasksFromUrl?.method ?? this.config?.loadTasksFromUrl?.method,
-        headers: json?.loadTasksFromUrl?.headers ?? this.config?.loadTasksFromUrl?.headers,
-        body: json?.loadTasksFromUrl?.body ?? this.config?.loadTasksFromUrl?.body,
+      canUpdateReportsFromUI: json?.canUpdateReportsFromUI ?? this.config?.canUpdateReportsFromUI,
+      loadReportsFromUrl: {
+        url: json?.loadReportsFromUrl?.url ?? this.config?.loadReportsFromUrl?.url,
+        method: json?.loadReportsFromUrl?.method ?? this.config?.loadReportsFromUrl?.method,
+        headers: json?.loadReportsFromUrl?.headers ?? this.config?.loadReportsFromUrl?.headers,
+        body: json?.loadReportsFromUrl?.body ?? this.config?.loadReportsFromUrl?.body,
       },
 
       output: {

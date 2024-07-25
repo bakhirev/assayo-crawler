@@ -22,7 +22,7 @@ export default `
 § page.print.description: The data for the report was obtained from the commit history.
 § page.team.author.title: Employee statistics
 § page.team.author.description1: *Part of the statistics* (work speed, costs, etc.) *for employees with the 'Assistant' type is not counted*, as it is an episodic role in the project. It is assumed that they do not affect the project, and their edits can be disregarded in the context of the overall volume of work.
-§ page.team.author.description2: *Default sorting* is by the number of tasks and groups (current, fired, assisting employees).
+§ page.team.author.description2: *Default sorting* is by the number of reports and groups (current, fired, assisting employees).
 § page.team.author.status: Status
 § page.team.author.firstCommit: First commit
 § page.team.author.lastCommit: Last
@@ -30,13 +30,13 @@ export default `
 § page.team.author.types: Types of work
 § page.team.author.commits: Commits
 § page.team.author.commitsSmall: commits
-§ page.team.author.tasks: Tasks
-§ page.team.author.tasksSmall: tasks
+§ page.team.author.reports: Reports
+§ page.team.author.reportsSmall: reports
 § page.team.author.workedLosses: Days with and without commits
 § page.team.author.worked: work
 § page.team.author.losses: days without commits
 § page.team.author.days: days
-§ page.team.author.daysForTask: Days per task
+§ page.team.author.daysForReport: Days per report
 § page.team.author.scopes: Features
 § page.team.author.moneyAll: Received
 § page.team.author.moneyWorked: Worked for
@@ -52,17 +52,17 @@ export default `
 § page.team.scope.scope: Feature
 § page.team.scope.days: Working Days
 § page.team.scope.authorsDays: Person-Days
-§ page.team.scope.tasks: Tasks
+§ page.team.scope.reports: Reports
 § page.team.scope.commits: Commits
 § page.team.scope.commitsSmall: commits
 § page.team.scope.types: Types of work
 § page.team.scope.authors: Personal contribution
 § page.team.scope.cost: Cost
-§ page.team.type.title: Task type statistics
+§ page.team.type.title: Report type statistics
 § page.team.type.description: *Personal contribution* is counted by the number of commits, not the volume of changed lines or files. Therefore, the "File Analysis" section should also be consulted to assess the scale of changes.
 § page.team.type.type: Type of work
-§ page.team.type.tasks: Tasks
-§ page.team.type.tasksSmall: tasks
+§ page.team.type.reports: Reports
+§ page.team.type.reportsSmall: reports
 § page.team.type.days: Days
 § page.team.type.daysSmall: days
 § page.team.type.authorsDays: Person-days
@@ -86,7 +86,7 @@ export default `
 § page.team.total.moneyLosses.description: Paid working days when there were no commits
 § page.team.total.weekendPayment.title: weekend work
 § page.team.total.weekendPayment.description: Total overpayment for weekend work
-§ page.team.total.workSpeed.title: tasks per day
+§ page.team.total.workSpeed.title: reports per day
 § page.team.total.workSpeed.description: Average work speed of the team with the current composition of employees
 § page.team.total.moneySpeed.title: per month
 § page.team.total.moneySpeed.description: Forecasted salary payment amount with the current team composition, excluding taxes and related expenses
@@ -111,7 +111,7 @@ export default `
 § page.team.day.activity: Activity
 § page.team.week.title: Weekly statistics
 § page.team.week.date: Date
-§ page.team.week.numberTasks: Number of tasks
+§ page.team.week.numberReports: Number of reports
 § page.team.week.people: Number of people
 § page.team.week.line: Line changes
 § page.team.week.days: Days with and without commits
@@ -122,9 +122,9 @@ export default `
 § page.team.week.hasCommits: had commits
 § page.team.week.hasNotCommits: had no commits
 § page.team.week.days: days
-§ page.team.week.tasks: tasks
-§ page.team.pr.task: Task
-§ page.team.pr.tasks: tasks
+§ page.team.week.reports: reports
+§ page.team.pr.report: Report
+§ page.team.pr.reports: reports
 § page.team.pr.firstCommitTime: First commit
 § page.team.pr.lastCommitTime: Last
 § page.team.pr.workDays: Development days
@@ -143,22 +143,22 @@ export default `
 § page.team.pr.work: development
 § page.team.pr.delay: waiting
 § page.team.pr.days: days
-§ page.team.pr.oneTaskDays: Time spent on one task
-§ page.team.pr.description1: *Development time* is the time difference from the first to the last commit on a task. It does not matter if there were breaks of several days between commits or not. Any commit increases the time.
+§ page.team.pr.oneReportDays: Time spent on one report
+§ page.team.pr.description1: *Development time* is the time difference from the first to the last commit on a report. It does not matter if there were breaks of several days between commits or not. Any commit increases the time.
 § page.team.pr.description2: *Waiting time* is the time between the last commit and the code merge. It shows the actual downtime while waiting for something.
 § page.team.pr.description3: *Why display development time* without splitting into coding and code review? To show the business the actual delivery time of the code. Waiting for testing, review comments, DevOps problems, and other process imperfections are already included in this term.
 § page.team.pr.statByAuthors: Statistics by employees
 § page.team.pr.longDelay: Prolonged Waiting for merge
-§ page.team.tasks.task: Task
-§ page.team.tasks.author: First commit author
-§ page.team.tasks.from: First commit
-§ page.team.tasks.to: Last commit
-§ page.team.tasks.daysInWork: Days in work
-§ page.team.tasks.commits: Commits number
-§ page.team.tasks.pr: Merge date
-§ page.team.tasks.prAuthor: Merged by user
-§ page.team.tasks.prDelayDays: Delay before merge in days
-§ page.team.tasks.comments: Comments
+§ page.team.reports.report: Report
+§ page.team.reports.author: First commit author
+§ page.team.reports.from: First commit
+§ page.team.reports.to: Last commit
+§ page.team.reports.daysInWork: Days in work
+§ page.team.reports.commits: Commits number
+§ page.team.reports.pr: Merge date
+§ page.team.reports.prAuthor: Merged by user
+§ page.team.reports.prDelayDays: Delay before merge in days
+§ page.team.reports.comments: Comments
 § page.team.extension.extension: File extensions
 § page.team.extension.type: File sub types
 § page.team.extension.name: Type
@@ -169,7 +169,7 @@ export default `
 § page.team.release.title: Release
 § page.team.release.from: Created date
 § page.team.release.to: Delivery date
-§ page.team.release.prLength: Tasks
+§ page.team.release.prLength: Reports
 § page.team.release.delay: Preparation days
 § page.team.release.waiting: Days of waiting for next release
 § page.person.print.photo.title: Photo
@@ -177,20 +177,20 @@ export default `
 § page.person.total.title: Main characteristics
 § page.person.total.daysWorked.title: days of work
 § page.person.total.daysWorked.description: Only days with commits are counted
-§ page.person.total.tasks.title: tasks
-§ page.person.total.tasks.description: If commits are properly signed
+§ page.person.total.reports.title: reports
+§ page.person.total.reports.description: If commits are properly signed
 § page.person.character.title: Character
 § page.person.achievement.title: Achievements
 § page.person.achievement.positive: Positive
 § page.person.achievement.normal: Neutral
 § page.person.achievement.negative: Negative
-§ page.person.achievement.description: The more negative achievements an employee accumulates, the higher the likelihood that the situation is unusual. It may be necessary to change their work mode, tasks, or reporting. A discussion with them to understand what problems are hindering their work is advisable.
+§ page.person.achievement.description: The more negative achievements an employee accumulates, the higher the likelihood that the situation is unusual. It may be necessary to change their work mode, reports, or reporting. A discussion with them to understand what problems are hindering their work is advisable.
 § page.person.gets.title: Gets taken:
-§ page.person.gets.description: "Taking a get" in this context means being the first to leave a commit on a task with a "nice" number.
+§ page.person.gets.description: "Taking a get" in this context means being the first to leave a commit on a report with a "nice" number.
 § page.person.business.days.title: days of work
 § page.person.business.days.description: Only days with commits are counted
-§ page.person.business.tasks.title: tasks
-§ page.person.business.tasks.description: If commits are properly signed
+§ page.person.business.reports.title: reports
+§ page.person.business.reports.description: If commits are properly signed
 § page.person.business.losses.title: days without commits
 § page.person.business.losses.description: All days minus: holidays, weekends, vacation, days with commits
 § page.person.business.commits.title: commits
@@ -216,11 +216,11 @@ will be marked as a jump in "deleted" and "added" lines.
 § page.person.money.moneyWorked.description: Actual days worked multiplied by average salary
 § page.person.money.moneyLosses.title: possible overpayment
 § page.person.money.moneyLosses.description: Days without commits multiplied by average salary
-§ page.person.money.tasks.title: task
-§ page.person.money.tasks.description: Number of closed tasks to the cost of the day
+§ page.person.money.reports.title: report
+§ page.person.money.reports.description: Number of closed reports to the cost of the day
 § page.person.money.commits.title: commit
 § page.person.money.commits.description: Number of commits to the cost of the workday
-§ page.person.speed.task: One task on average is
+§ page.person.speed.report: One report on average is
 § page.person.speed.max: Maximum speed per day
 § page.person.speed.days.title: days
 § page.person.speed.days.description: Refers to workdays, if commits are properly signed
@@ -228,15 +228,15 @@ will be marked as a jump in "deleted" and "added" lines.
 § page.person.speed.commits.description: Top and bottom 10% of values are trimmed
 § page.person.speed.line.title: lines of code
 § page.person.speed.line.description: Top and bottom 10% of values are trimmed
-§ page.person.speed.tasks.title: tasks
-§ page.person.speed.tasks.description: A task may not be completed, but work should be done on it
+§ page.person.speed.reports.title: reports
+§ page.person.speed.reports.description: A report may not be completed, but work should be done on it
 § page.person.speed.maxCommits.title: commits
-§ page.person.speed.maxCommits.description: A task may not be completed, but work should be done on it
+§ page.person.speed.maxCommits.description: A report may not be completed, but work should be done on it
 § page.person.hours.title: Distribution of commits during each day of the week
 § page.person.week.date: Date
-§ page.person.week.tasks: Number of tasks
+§ page.person.week.reports: Number of reports
 § page.person.week.workDays: Days with commits
-§ page.person.week.taskInDay: Tasks per day
+§ page.person.week.reportInDay: Reports per day
 § page.person.week.days: days
 § page.person.week.workDay: weekdays
 § page.person.week.weekends: weekends

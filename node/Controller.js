@@ -32,15 +32,15 @@ router.get('/api/v1.0/start', async (ctx, next) => {
   next();
 });
 
-router.get('/api/v1.0/stop', async (ctx, next) => {
+router.get('/api/v1.0/pause', async (ctx, next) => {
   const t = getTranslation(ctx);
   const status = app?.crawler?.pause();
   if (status) {
-    sendResponse(ctx, 200, t('stop.stopped'));
+    sendResponse(ctx, 200, t('pause.stopped'));
   } else if (app.crawler) {
-    sendResponse(ctx, 503, t('stop.already'));
+    sendResponse(ctx, 503, t('pause.already'));
   } else {
-    sendResponse(ctx, 503, t('stop.notFound'));
+    sendResponse(ctx, 503, t('pause.notFound'));
   }
   next();
 });
@@ -69,12 +69,12 @@ router.post('/api/v1.0/update/configs', async (ctx, next) => {
   next();
 });
 
-router.post('/api/v1.0/update/tasks', async (ctx, next) => {
+router.post('/api/v1.0/update/reports', async (ctx, next) => {
   const t = getTranslation(ctx);
-  if (app.updateTasks(ctx.request.body)) {
-    sendResponse(ctx, 200, t('tasks.changed'));
+  if (app.updateReports(ctx.request.body)) {
+    sendResponse(ctx, 200, t('reports.changed'));
   } else {
-    sendResponse(ctx, 403, t('tasks.forbidden'));
+    sendResponse(ctx, 403, t('reports.forbidden'));
   }
   next();
 });

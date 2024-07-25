@@ -13,7 +13,7 @@ export default `
 § uiKit.races.go: Let's go
 § uiKit.nothingFound.common.title: No or insufficient data to display
 § uiKit.nothingFound.common.description: The system will process more data if commits are signed in the format [Git commit message convention|https://www.conventionalcommits.org/en/v1.0.0/]. Template:
-§ uiKit.nothingFound.common.console: Task_number type(feature): description
+§ uiKit.nothingFound.common.console: Report_number type(feature): description
 § uiKit.nothingFound.common.example: For example:
 § uiKit.nothingFound.staff.title: No data for this employee
 § uiKit.nothingFound.staff.description1:

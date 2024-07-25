@@ -45,7 +45,7 @@ function Player() {
           mode="second"
           onClick={() => {
             if (status === STATUS.PROCESSING || status === STATUS.RESTART) {
-              settingsApi.stop().finally(() => {
+              settingsApi.pause().finally(() => {
                 notifications.show('Сервис остановлен.');
               });
             } else {

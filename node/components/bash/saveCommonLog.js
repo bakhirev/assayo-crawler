@@ -2,12 +2,12 @@ const { applyBashCommand, isExists, createFolder } = require('../../helpers/file
 const { removeFile, joinFiles } = require('./bashCommands');
 const ERROR = require('../errors/constants');
 
-async function saveCommonLog(folders, task, config, repository) {
+async function saveCommonLog(folders, report, config, repository) {
   const files = folders.map((folder) => `${folder}.txt`);
-  const folder = task.folder
-    ? `./output/${config.output.folder}/${task.folder}`
+  const folder = report.folder
+    ? `./output/${config.output.folder}/${report.folder}`
     : `./output/${config.output.folder}`;
-  const file = `${folder}/${task.code}.txt`;
+  const file = `${folder}/${report.code}.txt`;
 
   if (!isExists(folder)) {
     const commandForCreateFolder = createFolder(folder);

@@ -4,8 +4,8 @@ const {
   removeFolder,
 } = require('./bashCommands');
 
-async function removeFolders(allFolders, foldersForRemove, task) {
-  const removedFolders = task.needRemoveAfterUse
+async function removeFolders(allFolders, foldersForRemove, report) {
+  const removedFolders = report.needRemoveAfterUse
     ? allFolders
     : foldersForRemove
 

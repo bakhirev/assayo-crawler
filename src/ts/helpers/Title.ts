@@ -66,12 +66,12 @@ export default function getTitle(dataGrip: any, fileGrip: any, commits: any) {
   }
 
   const type = getFormattedType(fileGrip) || '';
-  const task = dataGrip.pr.statistic?.[0]?.task || '';
+  const report = dataGrip.pr.statistic?.[0]?.report || '';
   const author = dataGrip.firstLastCommit.minData.author || '';
   const year = commits?.[0]?.year || '';
 
-  const formattedTask = task.split('-').shift().toUpperCase() || '';
+  const formattedReport = report.split('-').shift().toUpperCase() || '';
   const formattedAuthor = author.split(' ').shift() || '';
 
-  return `${type} ${formattedTask} (${year}, ${formattedAuthor})`;
+  return `${type} ${formattedReport} (${year}, ${formattedAuthor})`;
 }

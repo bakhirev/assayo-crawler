@@ -10,8 +10,8 @@ export default {
       body: JSON.stringify(json),
     });
   },
-  updateTasks(json: any): Promise<any> {
-    return fetch('/api/v1.0/update/tasks', {
+  updateReports(json: any): Promise<any> {
+    return fetch('/api/v1.0/update/reports', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json;charset=utf-8',
@@ -26,8 +26,8 @@ export default {
   start(): Promise<any> {
     return fetch('/api/v1.0/start');
   },
-  stop(): Promise<any> {
-    return fetch('/api/v1.0/stop');
+  pause(): Promise<any> {
+    return fetch('/api/v1.0/pause');
   },
   restart(): Promise<any> {
     return fetch('/api/v1.0/restart');

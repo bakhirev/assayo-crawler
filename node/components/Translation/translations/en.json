@@ -2,12 +2,12 @@
   "start.running": "The process has been running.",
   "start.already": "Can\"t start the process because it\"s already running.",
   "start.notFound": "Can\"t start the process because Crawler not created.",
-  "stop.stopped": "The process has been stopped.",
-  "stop.already": "Can\"t stop the process because Crawler not started.",
-  "stop.notFound": "Can\"t stop the process because Crawler not created.",
+  "pause.stopped": "The process has been stopped.",
+  "pause.already": "Can\"t stop the process because Crawler not started.",
+  "pause.notFound": "Can\"t stop the process because Crawler not created.",
   "restart.restarted": "The process has been restarted.",
   "configs.changed": "The settings have been changed. The service has been restarted.",
   "configs.forbidden": "The action is prohibited by the current settings. Change flag \"canUpdateConfigFromUI\"",
-  "tasks.changed": "The tasks list have been changed. The crawler has been restarted.",
-  "tasks.forbidden": "The action is prohibited by the current settings. Change flag \"canUpdateTasksFromUI\""
+  "reports.changed": "The reports list have been changed. The crawler has been restarted.",
+  "reports.forbidden": "The action is prohibited by the current settings. Change flag \"canUpdateReportsFromUI\""
 }

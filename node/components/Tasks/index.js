@@ -1,43 +1,43 @@
-const log = require('../Logger')('TaskConfig');
+const log = require('../Logger')('ReportConfig');
 const request = require("../../helpers/fetch");
 
-class Tasks {
+class Reports {
   constructor() {
-    this.tasks = [];
+    this.reports = [];
   }
 
   update(json) {
     if (!json || typeof json !== 'object') {
-      log.warning(`JSON with tasks has an invalid format. The task list has been cleared.`);
-      this.tasks = [];
+      log.warning(`JSON with reports has an invalid format. The report list has been cleared.`);
+      this.reports = [];
       return this;
     }
 
     const list = Array.isArray(json) ? json : [json];
 
-    this.tasks = list
-      .map((task, id) => this.getFormattedTask(task, id))
+    this.reports = list
+      .map((report, id) => this.getFormattedReport(report, id))
       .filter((repository) => !!repository);
 
-    log.info(`The task list has been updated. Length: ${this.tasks.length} tasks.`);
+    log.info(`The report list has been updated. Length: ${this.reports.length} reports.`);
 
     return this;
   }
 
-  getFormattedTask(json, id) {
+  getFormattedReport(json, id) {
     if (!json?.code
       || typeof json?.code !== 'string'
       || (/[^A-Z0-9_-]/gim).test(json?.code)) {
-      log.warning(`Task #${id} have incorrect property "code".`);
+      log.warning(`Report #${id} have incorrect property "code".`);
       return null;
     }
 
     const repositories = (json?.repositories || [])
-      .map((repository, index) => this.getFormattedRepository(repository, `${index} in task #${json?.code || id}`))
+      .map((repository, index) => this.getFormattedRepository(repository, `${index} in report #${json?.code || id}`))
       .filter((repository) => !!repository);
 
     if (!repositories?.length)  {
-      log.warning(`Task #${id} (${json?.code}) have not correct repositories.`);
+      log.warning(`Report #${id} (${json?.code}) have not correct repositories.`);
       return null;
     }
 
@@ -76,7 +76,7 @@ class Tasks {
     try {
       json = await request[parameters?.method](parameters?.url, parameters?.body, parameters?.headers);
     } catch (e) {
-      log.error(`Cant load tasks from URL: "${parameters?.url}".`);
+      log.error(`Cant load reports from URL: "${parameters?.url}".`);
     }
 
     if (json && typeof json === 'object' && Array.isArray(json)){
@@ -89,8 +89,8 @@ class Tasks {
   }
 
   get() {
-    return this.tasks;
+    return this.reports;
   }
 }
 
-module.exports = Tasks;
+module.exports = Reports;

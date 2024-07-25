@@ -7,19 +7,19 @@ const actions = require('./actions');
 const log = require('../Logger')('Crawler');
 
 class Queue {
-  constructor(tasks) {
-    this.steps = this.getStepsList(tasks);
+  constructor(reports) {
+    this.steps = this.getStepsList(reports);
     this.stepIndex = 0;
     this.isEnd = false;
   }
 
-  getStepsList(tasks) {
+  getStepsList(reports) {
     const list = [];
-    tasks.forEach((task, taskIndex) => {
+    reports.forEach((report, reportIndex) => {
       const meta = {
-        taskIndex: taskIndex,
+        reportIndex: reportIndex,
         skipRepoSteps: false,
-        skipTaskSteps: false,
+        skipReportSteps: false,
         parentFolder: '',
         folder: '',
         foldersForRemove: [],
@@ -27,16 +27,16 @@ class Queue {
       };
 
       list.push({
-        id: STEPS.TASK_VALIDATION,
-        type: STEP_TYPE.TASK,
-        task,
+        id: STEPS.REPORT_VALIDATION,
+        type: STEP_TYPE.REPORT,
+        report,
         meta,
       });
 
-      task?.repositories?.forEach((repository) => {
+      report?.repositories?.forEach((repository) => {
         const step = {
           type: STEP_TYPE.REPO,
-          task,
+          report,
           repository,
           meta,
         };
@@ -47,8 +47,8 @@ class Queue {
         list.push({ ...step, id: STEPS.REPO_SET_FLAGS });
         list.push({ ...step, id: STEPS.REPO_FETCH });
         list.push({ ...step, id: STEPS.REPO_GET_LOG });
-        list.push({ ...step, id: STEPS.TASK_GET_LOG });
-        list.push({ ...step, id: STEPS.TASK_REMOVE_FOLDER });
+        list.push({ ...step, id: STEPS.REPORT_GET_LOG });
+        list.push({ ...step, id: STEPS.REPORT_REMOVE_FOLDER });
       });
     });
 
@@ -61,7 +61,7 @@ class Queue {
     const step = this.steps[this.stepIndex];
     this.updateIndex();
     if (!step
-      || (step?.type === STEP_TYPE.TASK && step?.meta?.skipTaskSteps)
+      || (step?.type === STEP_TYPE.REPORT && step?.meta?.skipReportSteps)
       || (step?.type === STEP_TYPE.REPO && step?.meta?.skipRepoSteps)
     ) return;
 
@@ -69,9 +69,9 @@ class Queue {
 
     let status;
     switch (step.id) {
-      case STEPS.TASK_VALIDATION:
-        status = actions.taskValidation(step);
-        step.meta.skipTaskSteps = !status;
+      case STEPS.REPORT_VALIDATION:
+        status = actions.reportValidation(step);
+        step.meta.skipReportSteps = !status;
         step.meta.skipRepoSteps = !status;
         break;
 
@@ -102,12 +102,12 @@ class Queue {
         step.meta.skipRepoSteps = !status;
         break;
 
-      case STEPS.TASK_GET_LOG:
-        await actions.getTaskLog(step, configs, errors);
+      case STEPS.REPORT_GET_LOG:
+        await actions.getReportLog(step, configs, errors);
         break;
 
-      case STEPS.TASK_REMOVE_FOLDER:
-        await actions.removeTaskFolders(step, configs, errors);
+      case STEPS.REPORT_REMOVE_FOLDER:
+        await actions.removeReportFolders(step, configs, errors);
         break;
 
       default:

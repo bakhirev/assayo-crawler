@@ -39,9 +39,9 @@ class Main {
     return true;
   }
 
-  updateTasks(json) {
-    if (!this.config.get()?.canUpdateTasksFromUI) return false;
-    this.crawler.tasks.update(json);
+  updateReports(json) {
+    if (!this.config.get()?.canUpdateReportsFromUI) return false;
+    this.crawler.reports.update(json);
     this.crawler.restart();
     return true;
   }

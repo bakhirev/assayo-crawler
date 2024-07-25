@@ -139,13 +139,13 @@ one person is deeply involved in a feature.
 Poor processes
 
 § recommendations.scope.types.process.description
-Most features contain one type of task.
+Most features contain one type of report.
 
 § recommendations.scope.types.one
-features contain one type of task.
+features contain one type of report.
 
 § recommendations.scope.types.common
-It's possible that developers are incorrectly signing commits or the manager is entering the same type of tasks.
+It's possible that developers are incorrectly signing commits or the manager is entering the same type of reports.
 
 # Why this is important:
 - it's impossible to hand over support to another team;
@@ -170,7 +170,7 @@ Develop a long-term plan
 § recommendations.scope.plan.description
 taking architecture into account.
 
-This plan should immediately focus on the most challenging tasks.
+This plan should immediately focus on the most challenging reports.
 
 # Why the lack of a plan is bad:
 - employees create a minimally viable version without planning for expansion points. After this, unscalable code is written, which slows down future features;
@@ -220,13 +220,13 @@ Needs to be monitored.
 - in this case, the indicator is between 60% and 80%;
 
 # How to monitor:
-- break tasks into 1..2 days;
+- break reports into 1..2 days;
 - ask for a status update every day;
-- ensure tasks are well defined and ready for development;
+- ensure reports are well defined and ready for development;
 - arrange pair programming to check actual speed;
 
 § recommendations.author.oneTypeMans
-receives too many monotonous tasks of the same type. Risk of burnout.
+receives too many monotonous reports of the same type. Risk of burnout.
 
 # Why this is important:
 - if an employee burns out, their work speed will decrease;
@@ -234,8 +234,8 @@ receives too many monotonous tasks of the same type. Risk of burnout.
 - the likelihood of resignation increases;
 
 # How the sample is chosen:
-- the type of task is determined for each commit;
-- if more than 70% of tasks are of the same type, it means the person is doing the same thing repeatedly;
+- the type of report is determined for each commit;
+- if more than 70% of reports are of the same type, it means the person is doing the same thing repeatedly;
 
 § recommendations.author.workToday.title: Working $1
 § recommendations.author.workToday.description
@@ -304,27 +304,27 @@ It is necessary to understand why the team is not writing code.
 - workload is considered light if the percentage of days without commits is between 5% and 20%;
 
 # Possible reasons:
-- there are actually no tasks;
-- there are tasks, but they fit well with the current architecture;
+- there are actually no reports;
+- there are reports, but they fit well with the current architecture;
 - developers are distracted by meetings;
 - the team is not working;
 
 # Solutions:
 - discuss the issue with the team;
-- reduce task granularity so that one or two tasks can be completed in a day;
-- introduce daily meetings to check the status of tasks;
+- reduce report granularity so that one or two reports can be completed in a day;
+- introduce daily meetings to check the status of reports;
 - arrange pair programming sessions to ensure that the developer can work faster;
 
 § recommendations.author.manager.title
 Set Deadlines
 
 § recommendations.author.manager.description
-Every task should have a clear deadline.
+Every report should have a clear deadline.
  
 This will prevent dragging out its completion for several days or weeks.
 
 # Indicators to check:
-- the number of days spent on one task by an employee;
+- the number of days spent on one report by an employee;
 - the number of days waiting for PR merge (PR statistics page);
 
 § recommendations.author.shorTalk.title
@@ -353,7 +353,7 @@ Develop a Training Plan
 § recommendations.author.ipr.description
 for each employee.
 
-*Individual training plan* is a list of goals and tasks that help a person develop in a certain area.
+*Individual training plan* is a list of goals and reports that help a person develop in a certain area.
 
 # How to create a plan:
 - create a competency matrix;
@@ -407,32 +407,32 @@ This will help build informal communication within the team and bring the team t
 § recommendations.week.lazyDays.down.title: Fewer Absences
 § recommendations.week.lazyDays.down.description: this indicator has dropped over the last three weeks
 § recommendations.week.lazyDays.up.title: More Absences
-§ recommendations.week.lazyDays.up.description: no tasks or stricter control is needed
+§ recommendations.week.lazyDays.up.description: no reports or stricter control is needed
 § recommendations.week.notWork.title: Consistently Underperforms
 § recommendations.week.notWork.description: as every week the code is not 100% of the time
 § recommendations.week.upWork.title: Consistently Overworks
 § recommendations.week.upWork.description: as every week code is written on weekend days
-§ recommendations.week.task.up.title: Productivity is growing
-§ recommendations.week.task.up.description: or tasks have become too small. Need to check. If granularity is the same - reinforce the result.
-§ recommendations.week.task.lazyMaintainer.description: consistently leads in absences. Fire?
-§ recommendations.week.task.down.title: Productivity is Falling
-§ recommendations.week.task.down.description
-or tasks are poorly split. Need to check. If granularity is the same - take control.
+§ recommendations.week.report.up.title: Productivity is growing
+§ recommendations.week.report.up.description: or reports have become too small. Need to check. If granularity is the same - reinforce the result.
+§ recommendations.week.report.lazyMaintainer.description: consistently leads in absences. Fire?
+§ recommendations.week.report.down.title: Productivity is Falling
+§ recommendations.week.report.down.description
+or reports are poorly split. Need to check. If granularity is the same - take control.
 
 # Assessment method:
-- the number of tasks per day that are being worked on has been steadily decreasing over the last three weeks.
+- the number of reports per day that are being worked on has been steadily decreasing over the last three weeks.
 
 # Possible errors:
-- tasks could have been more complex than they seemed;
-- tasks could have had a large volume of work (need to check if the number of changes is also decreasing during this period)
+- reports could have been more complex than they seemed;
+- reports could have had a large volume of work (need to check if the number of changes is also decreasing during this period)
 
-§ recommendations.type.everyHasOne.title: Not signing task types
-§ recommendations.type.everyHasOne.description: Most task types are done by one person.
+§ recommendations.type.everyHasOne.title: Not signing report types
+§ recommendations.type.everyHasOne.description: Most report types are done by one person.
 § recommendations.type.oneMaintainer.title: Narrow Specialization
 § recommendations.type.oneMaintainer.description
-most tasks of one type are done by the same people.
+most reports of one type are done by the same people.
 
-# Task types:
+# Report types:
 
 § recommendations.type.common
 # It might not be the case
@@ -446,7 +446,7 @@ Steps to ensure this:
 
 # If it is indeed the case
 
-You have set up checks and ensured that the same employee does tasks of the same type.
+You have set up checks and ensured that the same employee does reports of the same type.
 
 Why this is bad:
 - their resignation will halt a whole bunch of processes;
@@ -454,7 +454,7 @@ Why this is bad:
 - difficult to understand their edits at a higher level;
 
 How to fix this:
-- distribute different types of tasks evenly;
+- distribute different types of reports evenly;
 - change the area of work (tests, documentation, bugs) among employees every sprint;
 
 § recommendations.type.fewTypes.title
@@ -472,7 +472,7 @@ for a specific customer or problem.
 - etc.
 
 # Why this product looks like a "local" one:
-- each "global" sign will be outweighed by its type of task;
+- each "global" sign will be outweighed by its type of report;
 - the more "global" signs, the more likely a "global" product;
 
 In this case, we see a small number of types, which likely indicates shortcomings that prevent the product from being easily scaled to the global market and sold in other countries.
@@ -486,7 +486,7 @@ Split the popular type into subtypes
 § recommendations.type.diff.description
 to detail errors.
 
-Typically, the task type labeled "bug fixing" is leading. This makes the statistics weakly detailed.
+Typically, the report type labeled "bug fixing" is leading. This makes the statistics weakly detailed.
 
 *If you encounter this situation*, you can break down this type into subtypes (e.g., based on the location of detection).
 
@@ -496,12 +496,12 @@ Consider several options for subtypes:
 - fix (error detected in production);
 
 § recommendations.type.buddy.title
-Accumulate minor tasks
+Accumulate minor reports
 
 § recommendations.type.buddy.description
 for new employees.
 
-# If a task is:
+# If a report is:
 - not important;
 - not big;
 - doesn't require deep immersion in the context;
@@ -509,7 +509,7 @@ for new employees.
 
 # Put it in the backlog with the label "for beginners".
 
-When a new employee arrives, you will be able to immediately pull out a bunch of small and varied tasks for them to get acquainted with the project.
+When a new employee arrives, you will be able to immediately pull out a bunch of small and varied reports for them to get acquainted with the project.
 
-Also, if you have a lull in work, you can pull out one such minor task from the backlog.
+Also, if you have a lull in work, you can pull out one such minor report from the backlog.
 `;

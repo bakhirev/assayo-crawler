@@ -33,10 +33,10 @@ function Welcome() {
             }}
           />
           <Area
-            icon="./assets/cards/tasks.png"
+            icon="./assets/cards/reports.png"
             title="%Перетащите% JSON файл со списком заданий в эту область."
             description="Пример файла можно скачать %тут%."
-            link="/assets/example/tasks.json"
+            link="/assets/example/reports.json"
             onChange={() => {
               console.log('x');
             }}

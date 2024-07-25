@@ -1,6 +1,6 @@
-function getConfigAndTasks(files: string[]) {
+function getConfigAndReports(files: string[]) {
   let config = null;
-  let tasks: any[] = [];
+  let reports: any[] = [];
 
   (files || [])
     .map((text: string) => {
@@ -13,15 +13,15 @@ function getConfigAndTasks(files: string[]) {
     .filter(json => json && typeof json === 'object')
     .forEach((json) => {
       if (Array.isArray(json)) {
-        tasks = tasks.concat(json);
+        reports = reports.concat(json);
       } else if (json.code) {
-        tasks.push(json);
+        reports.push(json);
       } else {
         config = json;
       }
     });
 
-  return { config, tasks };
+  return { config, reports };
 }
 
 export async function getStringFromFileList(files: any) {
@@ -46,12 +46,12 @@ export function getOnDrop(setLoading: Function, onChange: Function) {
 
     const text = await getStringFromFileList(files);
 
-    const { config, tasks } = getConfigAndTasks(text);
+    const { config, reports } = getConfigAndReports(text);
     if (config) {
       onChange('config', config);
     }
-    if (tasks.length) {
-      onChange('tasks', tasks);
+    if (reports.length) {
+      onChange('reports', reports);
     }
   };
 }

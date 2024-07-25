@@ -34,24 +34,24 @@ function getStatus(callback, errors) {
 }
 
 const methods = {
-  taskValidation(step) {
-    const task = step?.task;
-    const id = task?.code || step?.meta?.taskIndex;
+  reportValidation(step) {
+    const report = step?.report;
+    const id = report?.code || step?.meta?.reportIndex;
 
-    log.info(`Task #${id} was taken to work.`);
+    log.info(`Report #${id} was taken to work.`);
 
-    if (typeof task.status === 'number' && task.status !== 1) {
-      log.warning(`Task "status" is not 1 (ready to parse).`);
+    if (typeof report.status === 'number' && report.status !== 1) {
+      log.warning(`Report "status" is not 1 (ready to parse).`);
       return false;
     }
 
-    if (!task.code) {
-      log.warning(`Task have not "code" for save result.`);
+    if (!report.code) {
+      log.warning(`Report have not "code" for save result.`);
       return false;
     }
 
-    if (!task.repositories?.length) {
-      log.warning(`Task have not "repositories" for processing.`);
+    if (!report.repositories?.length) {
+      log.warning(`Report have not "repositories" for processing.`);
       return false;
     }
 
@@ -68,8 +68,8 @@ const methods = {
     step.meta.parentFolder = parentFolder;
     step.meta.folder = folder;
 
-    const id = step?.task?.code || step?.meta?.taskIndex;
-    log.info(`Repository ${repository?.url} (task #${id}) was taken to work.`);
+    const id = step?.report?.code || step?.meta?.reportIndex;
+    log.info(`Repository ${repository?.url} (report #${id}) was taken to work.`);
   },
 
   createFoldersForRepository(step, config, errors) {
@@ -89,7 +89,7 @@ const methods = {
   setFlagsForRepository(step, config) {
     const folder = step.meta.folder;
     const needRemoveAfterUse = config.input.needRemoveAfterUse
-      || step.task.needRemoveAfterUse
+      || step.report.needRemoveAfterUse
       || step.repository.needRemoveAfterUse;
 
     if (needRemoveAfterUse) {
@@ -106,29 +106,29 @@ const methods = {
   },
 
   async getRepositoryLog(step, config, errors) {
-    const task = step.task;
+    const report = step.report;
     const folder = step.meta.folder;
     return await getAsyncStatus(async () => (
-      await createLogForRepository(folder, config, task)
+      await createLogForRepository(folder, config, report)
     ), errors, () => {
       step.meta.foldersWithLogFiles.push(step.meta.folder);
     });
   },
 
-  async getTaskLog(step, config, errors) {
-    const task = step.task;
+  async getReportLog(step, config, errors) {
+    const report = step.report;
     const folders = step.meta.foldersWithLogFiles;
     return await getAsyncStatus(async () => (
-      await saveCommonLog(folders, task, config, task.repositories)
+      await saveCommonLog(folders, report, config, report.repositories)
     ), errors);
   },
 
-  async removeTaskFolders(step, config, errors) {
-    const task = step.task;
+  async removeReportFolders(step, config, errors) {
+    const report = step.report;
     const folders = step.meta.foldersWithLogFiles;
     const foldersForRemove = step.meta.foldersForRemove;
     return await getAsyncStatus(async () => (
-      await removeFolders(folders, foldersForRemove, task)
+      await removeFolders(folders, foldersForRemove, report)
     ), errors);
   },
 }

@@ -12,7 +12,7 @@ export default `
 § uiKit.page.remove: 削除
 § uiKit.nothingFound.common.title: 表示するデータがない、または不十分なデータがあります
 § uiKit.nothingFound.common.description: コミットが次の形式で署名されている場合、システムはより多くのデータを処理します [Git commit message convention|https://www.conventionalcommits.org/en/v1.0.0/]. パターン:
-§ uiKit.nothingFound.common.console: Task_numberタイプ(モジュール): 説明
+§ uiKit.nothingFound.common.console: Report_numberタイプ(モジュール): 説明
 § uiKit.nothingFound.common.example: 説明:
 § uiKit.nothingFound.staff.title: この従業員のデータはありません
 § uiKit.nothingFound.staff.description1:

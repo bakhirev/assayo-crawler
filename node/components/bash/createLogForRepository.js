@@ -8,7 +8,7 @@ const {
   getLogWithoutFile,
 } = require('./bashCommands');
 
-async function createLogForRepository(folder, config, task) {
+async function createLogForRepository(folder, config, report) {
   const file = `${folder}.txt`;
   if (isExists(file)) {
     const commandForRemoveFile = removeFile(file);
@@ -17,7 +17,7 @@ async function createLogForRepository(folder, config, task) {
   }
 
   const fileName = folder.split('/').pop();
-  const removeFileInfo = config.removeFileInfo ||  task.removeFileInfo;
+  const removeFileInfo = config.removeFileInfo ||  report.removeFileInfo;
   const commandForCreateLog = getCommand([
     openFolder(folder),
     (removeFileInfo

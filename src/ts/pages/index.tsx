@@ -28,8 +28,8 @@ const Main = observer(() => {
               });
           }
 
-          if (type === 'tasks') {
-            settingsApi.updateTasks(json)
+          if (type === 'reports') {
+            settingsApi.updateReports(json)
               .then(() => {
                 notifications.show('Список заданий обновлён.');
               });

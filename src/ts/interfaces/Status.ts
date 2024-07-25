@@ -1,6 +1,6 @@
 export default interface IStatus {
   status?: string;
-  task?: string;
+  report?: string;
   repository?: string;
   phase?: string;
   progressInPercent?: number;

@@ -30,13 +30,13 @@ export default `
 § page.team.author.types: Type de travaux
 § page.team.author.commits: Commits
 § page.team.author.commitsSmall: commits
-§ page.team.author.tasks: tâche
-§ page.team.author.tasksSmall: tâche
+§ page.team.author.reports: tâche
+§ page.team.author.reportsSmall: tâche
 § page.team.author.workedLosses: Jours avec et sans commits
 § page.team.author.worked: travail
 § page.team.author.losses: jours sans commits
 § page.team.author.days: jours
-§ page.team.author.daysForTask: Jours par tâche
+§ page.team.author.daysForReport: Jours par tâche
 § page.team.author.scopes: Mise au point
 § page.team.author.moneyAll: L'argent reçu
 § page.team.author.moneyWorked: Travaillas
@@ -52,7 +52,7 @@ export default `
 § page.team.scope.scope: Mise au point
 § page.team.scope.days: Esclave. jours
 § page.team.scope.authorsDays: Jours-homme
-§ page.team.scope.tasks: Tâches
+§ page.team.scope.reports: Tâches
 § page.team.scope.commits: Commits
 § page.team.scope.commitsSmall: commits
 § page.team.scope.types: Type de travaux
@@ -61,8 +61,8 @@ export default `
 § page.team.type.title: Statistiques par type de tâche
 § page.team.type.description: *Contribution personnelle* compte tenu du nombre de commits plutôt que de la taille des lignes ou fichiers modifiés. Vous devez donc également consulter la section “Analyse des fichiers” afin d’évaluer l’ampleur des modifications.
 § page.team.type.type: Type de travail
-§ page.team.type.tasks: Задач
-§ page.team.type.tasksSmall: Tâche
+§ page.team.type.reports: Задач
+§ page.team.type.reportsSmall: Tâche
 § page.team.type.days: Jours
 § page.team.type.daysSmall: Jours
 § page.team.type.authorsDays: Jours-homme
@@ -111,7 +111,7 @@ export default `
 § page.team.day.activity: Activity
 § page.team.week.title: Statistiques par semaine
 § page.team.week.date: Date
-§ page.team.week.numberTasks: Nombre de tâches
+§ page.team.week.numberReports: Nombre de tâches
 § page.team.week.people: Nombre de personnes
 § page.team.week.line: Modification des lignes
 § page.team.week.days: Jours avec et sans commits
@@ -122,14 +122,14 @@ export default `
 § page.team.week.hasCommits: il y avait des commits
 § page.team.week.hasNotCommits: il n'y avait pas de commits
 § page.team.week.days: jours
-§ page.team.week.tasks: tâches
-§ page.team.pr.task: tâches
-§ page.team.pr.tasks: tâches
+§ page.team.week.reports: tâches
+§ page.team.pr.report: tâches
+§ page.team.pr.reports: tâches
 § page.team.pr.firstCommitTime: Premier commit
 § page.team.pr.lastCommitTime: Dernier
-§ page.team.pr.workDays: Average time spent working on a task
+§ page.team.pr.workDays: Average time spent working on a report
 § page.team.pr.delayDays: Average time of the PR review
-§ page.team.pr.all.workDays: Time spent working on a task
+§ page.team.pr.all.workDays: Time spent working on a report
 § page.team.pr.all.delayDays: Time of the PR review
 § page.team.pr.middleTimeRelease: The ratio of development time to review time
 § page.team.pr.chart.1day: day
@@ -145,22 +145,22 @@ export default `
 § page.team.pr.work: développement
 § page.team.pr.delay: attente
 § page.team.pr.days: jours
-§ page.team.pr.oneTaskDays: Temps passé sur une tâche
+§ page.team.pr.oneReportDays: Temps passé sur une tâche
 § page.team.pr.description1: *Temps de développement* c’est la différence de temps entre le premier et le dernier commit pour un problème donné. Il n’importe pas si il y avait des pauses pendant plusieurs jours entre les commits, ou non. Le fait même d’avoir fait un quelconque commit augmente le temps.
 § page.team.pr.description2: *Délai d'attente* c'est le temps entre le dernier commit et l'injection de code. Il montre le réel simple en attendant quoi que ce soit.
 § page.team.pr.description3: *Pourquoi afficher le temps de développement* sans se diviser en Coding et revue de code? Ensuite, pour montrer à l'entreprise le délai de Livraison réel du code. L'attente des tests, les commentaires sur la revue, les problèmes de DevOps et d'autres imperfections du processus sont déjà posés dans cette période.
 § page.team.pr.statByAuthors: Statistiques du personnel
 § page.team.pr.longDelay: Longue attente pour l'injection
-§ page.team.tasks.task: Tâche
-§ page.team.tasks.author: Auteur du premier commit
-§ page.team.tasks.from: Premier commit
-§ page.team.tasks.to: Dernier commit
-§ page.team.tasks.daysInWork: Jours de travail
-§ page.team.tasks.commits: Nombre de commits
-§ page.team.tasks.pr: Date de diffusion
-§ page.team.tasks.prAuthor: Versai
-§ page.team.tasks.prDelayDays: Jours d'attente
-§ page.team.tasks.comments: Commentaires
+§ page.team.reports.report: Tâche
+§ page.team.reports.author: Auteur du premier commit
+§ page.team.reports.from: Premier commit
+§ page.team.reports.to: Dernier commit
+§ page.team.reports.daysInWork: Jours de travail
+§ page.team.reports.commits: Nombre de commits
+§ page.team.reports.pr: Date de diffusion
+§ page.team.reports.prAuthor: Versai
+§ page.team.reports.prDelayDays: Jours d'attente
+§ page.team.reports.comments: Commentaires
 § page.team.extension.extension: File extensions
 § page.team.extension.type: File sub types
 § page.team.extension.name: Type
@@ -171,7 +171,7 @@ export default `
 § page.team.release.title: Release
 § page.team.release.from: Created date
 § page.team.release.to: Delivery date
-§ page.team.release.prLength: Tasks
+§ page.team.release.prLength: Reports
 § page.team.release.delay: Preparation days
 § page.team.release.waiting: Days of waiting for next release
 § page.person.print.photo.title: Photo
@@ -179,8 +179,8 @@ export default `
 § page.person.total.title: Caractéristiques de base
 § page.person.total.daysWorked.title: jours de travail
 § page.person.total.daysWorked.description: Seuls les jours où les commits ont été effectués sont pris en compte
-§ page.person.total.tasks.title: tâches
-§ page.person.total.tasks.description: Si les commits sont correctement signés
+§ page.person.total.reports.title: tâches
+§ page.person.total.reports.description: Si les commits sont correctement signés
 § page.person.character.title: Personnage
 § page.person.achievement.title: Les progrès
 § page.person.achievement.positive: Positifs
@@ -191,8 +191,8 @@ export default `
 § page.person.gets.description: «Prendre geth» dans ce cas, cela signifie d'abord laisser le commit à la tâche avec un numéro «beau».
 § page.person.business.days.title: jours de travail
 § page.person.business.days.description: Seuls les jours où les commits ont été effectués sont pris en compte
-§ page.person.business.tasks.title: tâches
-§ page.person.business.tasks.description: Si les commits sont correctement signés
+§ page.person.business.reports.title: tâches
+§ page.person.business.reports.description: Si les commits sont correctement signés
 § page.person.business.losses.title: jours sans commits
 § page.person.business.losses.description: Tous les jours moins: vacances, week-ends, vacances, jours avec commits
 § page.person.business.commits.title: commits
@@ -215,11 +215,11 @@ export default `
 § page.person.money.moneyWorked.description: Jours effectivement travaillés multipliés par le nombre moyen de jours travaillés
 § page.person.money.moneyLosses.title: trop-perçu possible
 § page.person.money.moneyLosses.description: Jours sans commits multipliés par la moyenne SN
-§ page.person.money.tasks.title: tâche
-§ page.person.money.tasks.description: Nombre de tâches fermées au coût de la journée
+§ page.person.money.reports.title: tâche
+§ page.person.money.reports.description: Nombre de tâches fermées au coût de la journée
 § page.person.money.commits.title: commit
 § page.person.money.commits.description: Nombre de commits par jour ouvrable
-§ page.person.speed.task: Une tâche en moyenne est
+§ page.person.speed.report: Une tâche en moyenne est
 § page.person.speed.max: Vitesse maximale par jour
 § page.person.speed.days.title: jours
 § page.person.speed.days.description: Cela signifie des jours ouvrables si les commits sont correctement signés
@@ -227,15 +227,15 @@ export default `
 § page.person.speed.commits.description: 10% des valeurs maximales et minimales sont coupées
 § page.person.speed.line.title: lignes de code
 § page.person.speed.line.description: 10% des valeurs maximales et minimales sont coupées
-§ page.person.speed.tasks.title: tâches
-§ page.person.speed.tasks.description: La tâche peut ne pas être terminée, mais le travail sur elle doit être
+§ page.person.speed.reports.title: tâches
+§ page.person.speed.reports.description: La tâche peut ne pas être terminée, mais le travail sur elle doit être
 § page.person.speed.maxCommits.title: commits
 § page.person.speed.maxCommits.description: La tâche peut ne pas être terminée, mais le travail sur elle doit être
 § page.person.hours.title: Répartition des commits par jour de la semaine
 § page.person.week.date: Date
-§ page.person.week.tasks: Nombre de tâches
+§ page.person.week.reports: Nombre de tâches
 § page.person.week.workDays: Jours avec commits
-§ page.person.week.taskInDay: Tâches par jour
+§ page.person.week.reportInDay: Tâches par jour
 § page.person.week.days: jours
 § page.person.week.workDay: jours de semaine
 § page.person.week.weekends: congés

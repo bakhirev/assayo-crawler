@@ -1,7 +1,7 @@
 const Koa = require('koa');
 const Router = require('koa-router');
-const tasks = require('./configs/tasks.json');
-tasks.unshift();
+const reports = require('./configs/reports.json');
+reports.unshift();
 
 const app = new Koa();
 const router = new Router();
@@ -12,8 +12,8 @@ function sendResponse(context, status, json) {
   context.body = json || {};
 }
 
-router.get('/tasks', async (ctx, next) => {
-  sendResponse(ctx, 200, tasks);
+router.get('/reports', async (ctx, next) => {
+  sendResponse(ctx, 200, reports);
   next();
 });
 
