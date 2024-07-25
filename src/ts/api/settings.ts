@@ -29,6 +29,9 @@ export default {
   pause(): Promise<any> {
     return fetch('/api/v1.0/pause');
   },
+  stop(): Promise<any> {
+    return fetch('/api/v1.0/stop');
+  },
   restart(): Promise<any> {
     return fetch('/api/v1.0/restart');
   },

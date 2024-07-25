@@ -58,8 +58,14 @@ class Crawler {
     if (this.status === STATUS.STOP
       || this.status === STATUS.RESTART
       || this.status === STATUS.WAITING) return false;
-    this.status = STATUS.STOP;
+
     log.info('Processing was stopped.');
+    if (this.status === STATUS.PAUSE) {
+      this._finished();
+    } else {
+      this.status = STATUS.STOP;
+    }
+
     return true;
   }
 
@@ -69,10 +75,11 @@ class Crawler {
 
     log.info('Processing was restarted.');
     if (this.status === STATUS.PAUSE) {
-      this._updateQueue();
-      return this.start();
+      this._finished();
+      setTimeout(() => this.start());
+    } else {
+      this.status = STATUS.RESTART;
     }
-    this.status = STATUS.RESTART;
     return true;
   }
 
@@ -87,20 +94,25 @@ class Crawler {
     }
   }
 
+  _finished() {
+    log.info('Processing was finished. Waiting a trigger for start.');
+    this.statistic.end();
+    this.queue = null;
+    this.status = STATUS.WAITING;
+  }
+
   async _runProcessing() {
     this._clearErrors();
     this.statistic.start();
+
     while (!this.queue.isEnd && this.status === STATUS.PROCESSING) {
       await this.queue.next(this.config, this.errors);
     }
+
     if (this.status === STATUS.PROCESSING || this.status === STATUS.STOP) {
-      log.info('Processing was finished. Waiting a trigger for start.');
-      this.statistic.end();
-      this._updateQueue();
-      this.status = STATUS.WAITING;
+      this._finished();
     } else if (this.status === STATUS.RESTART) {
-      this._updateQueue();
-      this.status = STATUS.PAUSE;
+      this._finished();
       setTimeout(() => this.start());
     }
   }
@@ -120,7 +132,7 @@ class Crawler {
 
     return {
       status: this.status,
-      report: step?.report?.code || null,
+      report: step?.report?.log?.name || null,
       repository: step?.repository?.url || null,
       phase: step?.id || null,
       progressInPercent,

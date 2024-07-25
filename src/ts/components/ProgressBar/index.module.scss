@@ -29,7 +29,7 @@
     color: var(--color-white);
     background-color: green;
     background-size: 23px 22px;
-    transition: background-color 2s, width 2s;
+    transition: background-color 2s, width 0.5s;
 
     background-image: -webkit-repeating-linear-gradient(135deg, rgba(255, 255, 255, .35), rgba(255, 255, 255, .35) 8px, rgba(255, 255, 255, 0) 9px, rgba(255, 255, 255, 0) 16px);
     background-image: repeating-linear-gradient(-45deg, rgba(255, 255, 255, .35), rgba(255, 255, 255, .35) 8px, rgba(255, 255, 255, 0) 9px, rgba(255, 255, 255, 0) 16px);

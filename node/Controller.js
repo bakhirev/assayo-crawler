@@ -45,6 +45,19 @@ router.get('/api/v1.0/pause', async (ctx, next) => {
   next();
 });
 
+router.get('/api/v1.0/stop', async (ctx, next) => {
+  const t = getTranslation(ctx);
+  const status = app?.crawler?.stop();
+  if (status) {
+    sendResponse(ctx, 200, t('stop.stopped'));
+  } else if (app.crawler) {
+    sendResponse(ctx, 503, t('pause.already'));
+  } else {
+    sendResponse(ctx, 503, t('pause.notFound'));
+  }
+  next();
+});
+
 router.get('/api/v1.0/restart', async (ctx, next) => {
   const t = getTranslation(ctx);
   const status = app?.crawler?.restart();

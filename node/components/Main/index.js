@@ -17,18 +17,6 @@ class Main {
     });
   }
 
-  start() {
-    return this.crawler.start();
-  }
-
-  pause() {
-    return this.crawler.pause();
-  }
-
-  restart() {
-    return this.crawler.restart();
-  }
-
   updateConfig(json) {
     if (!this.config.get()?.canUpdateConfigFromUI) return false;
     this.config.merge(json).load().then(() => {

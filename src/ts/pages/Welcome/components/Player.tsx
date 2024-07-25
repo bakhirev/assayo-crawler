@@ -13,6 +13,7 @@ enum STATUS {
   PAUSE = 2,
   WAITING = 3,
   RESTART = 4,
+  STOP = 5,
 }
 
 function Player() {
@@ -43,6 +44,7 @@ function Player() {
       <div className={style.welcome_player_buttons}>
         <UiKitButton
           mode="second"
+          disabled={status === STATUS.RESTART || status === STATUS.STOP}
           onClick={() => {
             if (status === STATUS.PROCESSING || status === STATUS.RESTART) {
               settingsApi.pause().finally(() => {
@@ -65,7 +67,25 @@ function Player() {
         </UiKitButton>
         <UiKitButton
           mode="second"
-          disabled={status === STATUS.WAITING || status === STATUS.RESTART}
+          disabled={status === STATUS.WAITING || status === STATUS.RESTART || status === STATUS.STOP}
+          onClick={() => {
+            settingsApi.stop().finally(() => {
+              setPercent(0);
+              setDescription('');
+              setStatus(STATUS.STOP);
+              notifications.show('Сервис остановлен.');
+            });
+          }}
+        >
+          <img
+            alt="Stop icon"
+            src="./assets/player/stop.svg"
+            className={style.welcome_player_icon}
+          />
+        </UiKitButton>
+        <UiKitButton
+          mode="second"
+          disabled={status === STATUS.WAITING || status === STATUS.RESTART || status === STATUS.STOP}
           onClick={() => {
             settingsApi.restart().finally(() => {
               setPercent(0);
