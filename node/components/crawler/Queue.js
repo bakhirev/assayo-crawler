@@ -33,11 +33,16 @@ class Queue {
         meta,
       });
 
-      report?.repositories?.forEach((repository) => {
+      const common = report?.repositories;
+      report?.repositories?.list?.forEach((repository) => {
         const step = {
           type: STEP_TYPE.REPO,
           report,
-          repository,
+          repository: {
+            folder: common?.folder,
+            needRemoveAfterUse: common?.needRemoveAfterUse,
+            ...repository,
+          },
           meta,
         };
 

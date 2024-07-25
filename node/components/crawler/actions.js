@@ -14,7 +14,7 @@ const log = require('../Logger')('Crawler');
 async function getAsyncStatus(callback, errors, success) {
   const errorMessage = await callback();
   if (errorMessage) {
-    log.warning(errorMessage);
+    log.warning(`The phase ${errorMessage} has error. We skipped it and went on.`);
     errors.push(errorMessage);
     return false;
   }
@@ -36,7 +36,7 @@ function getStatus(callback, errors) {
 const methods = {
   reportValidation(step) {
     const report = step?.report;
-    const id = report?.code || step?.meta?.reportIndex;
+    const id = report?.log?.name || step?.meta?.reportIndex;
 
     log.info(`Report #${id} was taken to work.`);
 
@@ -45,12 +45,12 @@ const methods = {
       return false;
     }
 
-    if (!report.code) {
-      log.warning(`Report have not "code" for save result.`);
+    if (!report.log?.name) {
+      log.warning(`Report have not "log.name" for save result.`);
       return false;
     }
 
-    if (!report.repositories?.length) {
+    if (!report.repositories?.list?.length) {
       log.warning(`Report have not "repositories" for processing.`);
       return false;
     }
@@ -68,7 +68,7 @@ const methods = {
     step.meta.parentFolder = parentFolder;
     step.meta.folder = folder;
 
-    const id = step?.report?.code || step?.meta?.reportIndex;
+    const id = step?.report?.log?.name || step?.meta?.reportIndex;
     log.info(`Repository ${repository?.url} (report #${id}) was taken to work.`);
   },
 
@@ -93,7 +93,7 @@ const methods = {
       || step.repository.needRemoveAfterUse;
 
     if (needRemoveAfterUse) {
-      step.foldersForRemove.push(folder);
+      step.meta.foldersForRemove.push(folder);
     }
   },
 

@@ -1,5 +1,5 @@
 const log = require('../Logger')('Crawler');
-const Reports = require('../Reports');
+const Reports = require('../Tasks');
 const { createFolder } = require('../../helpers/files');
 const defaultReports = require("../../configs/reports.json");
 
@@ -11,6 +11,7 @@ const STATUS = {
   PAUSE: 2,
   WAITING: 3,
   RESTART: 4,
+  STOP: 5,
 }
 
 class Crawler {
@@ -36,7 +37,9 @@ class Crawler {
   }
 
   start() {
-    if (this.status === STATUS.PROCESSING || this.status === STATUS.RESTART) return false;
+    if (this.status === STATUS.PROCESSING
+      || this.status === STATUS.RESTART
+      || this.status === STATUS.STOP) return false;
     this.status = STATUS.PROCESSING;
     log.info('Processing was started.');
     if (!this.queue) this._updateQueue();
@@ -47,6 +50,15 @@ class Crawler {
   pause() {
     if (this.status !== STATUS.PROCESSING) return false;
     this.status = STATUS.PAUSE;
+    log.info('Processing was stopped.');
+    return true;
+  }
+
+  stop() {
+    if (this.status === STATUS.STOP
+      || this.status === STATUS.RESTART
+      || this.status === STATUS.WAITING) return false;
+    this.status = STATUS.STOP;
     log.info('Processing was stopped.');
     return true;
   }
@@ -81,7 +93,7 @@ class Crawler {
     while (!this.queue.isEnd && this.status === STATUS.PROCESSING) {
       await this.queue.next(this.config, this.errors);
     }
-    if (this.status === STATUS.PROCESSING) {
+    if (this.status === STATUS.PROCESSING || this.status === STATUS.STOP) {
       log.info('Processing was finished. Waiting a trigger for start.');
       this.statistic.end();
       this._updateQueue();

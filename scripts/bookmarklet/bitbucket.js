@@ -1,8 +1,15 @@
 (() => {
   function getConfig(code, repositories) {
-    return code && repositories.length
-      ? [{ code, folder: code, status: 1, repositories }]
-      : [];
+    return code && repositories.length ? [{
+      status: 1,
+      log: {
+        name: code
+      },
+      repositories: {
+        folder: code,
+        list: repositories,
+      }
+    }] : [];
   }
 
   function getRepositories(selector, getUrl) {

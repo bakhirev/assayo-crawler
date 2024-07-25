@@ -25,27 +25,31 @@ class Reports {
   }
 
   getFormattedReport(json, id) {
-    if (!json?.code
-      || typeof json?.code !== 'string'
+    if (!json?.log?.name
+      || typeof json?.log?.name !== 'string'
       || (/[^A-Z0-9_-]/gim).test(json?.code)) {
-      log.warning(`Report #${id} have incorrect property "code".`);
+      log.warning(`Report #${id} have incorrect property "log.name".`);
       return null;
     }
 
-    const repositories = (json?.repositories || [])
+    const list = (json?.repositories?.list || [])
       .map((repository, index) => this.getFormattedRepository(repository, `${index} in report #${json?.code || id}`))
       .filter((repository) => !!repository);
 
-    if (!repositories?.length)  {
+    if (!list?.length)  {
       log.warning(`Report #${id} (${json?.code}) have not correct repositories.`);
       return null;
     }
 
     return {
-      code: json?.code,
-      folder: json?.folder,
       status: json?.status ?? 1,
-      repositories,
+      log: {
+        ...json?.log,
+      },
+      repositories: {
+        ...json?.repositories,
+        list,
+      },
     };
   }
 

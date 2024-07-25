@@ -1,29 +1,40 @@
 [
   {
-    "code": "test_project",
-    "folder": "some_folder",
     "status": 1,
-    "repositories": [
-      {
-        "url": "https://github.com/bakhirev/assayo.git",
-        "needRemoveAfterUse": false
-      },
-      {
-        "folder": "backend",
-        "url": "https://github.com/bakhirev/html-game.git"
-      },
-      {
-        "url": "https://github.com/bakhirev/lab_scp.git"
-      }
-    ]
+    "log": {
+      "name": "short_format_example"
+    },
+    "repositories": {
+      "list": [
+        {
+          "url": "https://github.com/bakhirev/lab_scp.git"
+        }
+      ]
+    }
   },
   {
-    "code": "frontend",
     "status": 1,
-    "repositories": [
-      {
-        "url": "https://github.com/bakhirev/lab_scp.git"
-      }
-    ]
+    "log": {
+      "name": "full_format_example",
+      "folder": "FF",
+      "removeFileInfo": true
+    },
+    "repositories": {
+      "folder": "frontend",
+      "needRemoveAfterUse": false,
+      "list": [
+        {
+          "branchName": "main",
+          "needRemoveAfterUse": true,
+          "url": "https://github.com/bakhirev/assayo.git"
+        },
+        {
+          "folder": "backend",
+          "branchName": "main",
+          "needRemoveAfterUse": false,
+          "url": "https://github.com/bakhirev/html-game.git"
+        }
+      ]
+    }
   }
 ]

@@ -17,7 +17,7 @@ async function createLogForRepository(folder, config, report) {
   }
 
   const fileName = folder.split('/').pop();
-  const removeFileInfo = config.removeFileInfo ||  report.removeFileInfo;
+  const removeFileInfo = config?.output?.removeFileInfo ||  report?.log?.removeFileInfo;
   const commandForCreateLog = getCommand([
     openFolder(folder),
     (removeFileInfo
