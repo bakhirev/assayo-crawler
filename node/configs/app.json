@@ -3,12 +3,12 @@
   "canUpdateReportsFromUI": true,
   "input": {
     "folder": "repositories",
+    "removeFileInfo": false,
     "needCreateAfterInit": true,
     "needRemoveAfterUse": false
   },
   "output": {
     "folder": "logs",
-    "needCreateAfterInit": true,
-    "removeFileInfo": false
+    "needCreateAfterInit": true
   }
 }

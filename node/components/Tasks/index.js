@@ -67,6 +67,7 @@ class Reports {
     return {
       url: json?.url,
       folder: json?.folder,
+      removeFileInfo: json?.removeFileInfo,
       needRemoveAfterUse: !!json?.needRemoveAfterUse
     };
   }

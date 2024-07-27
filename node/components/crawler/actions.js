@@ -106,10 +106,10 @@ const methods = {
   },
 
   async getRepositoryLog(step, config, errors) {
-    const report = step.report;
     const folder = step.meta.folder;
+    const repository = step.repository;
     return await getAsyncStatus(async () => (
-      await createLogForRepository(folder, config, report)
+      await createLogForRepository(folder, config, repository)
     ), errors, () => {
       step.meta.foldersWithLogFiles.push(step.meta.folder);
     });
