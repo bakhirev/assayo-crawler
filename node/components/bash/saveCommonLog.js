@@ -1,6 +1,6 @@
 const { applyBashCommand, isExists, createFolder } = require('../../helpers/files');
 const { removeFile, joinFiles } = require('./bashCommands');
-const ERROR = require('../errors/constants');
+const ERROR = require('../Errors/constants');
 
 async function saveCommonLog(folders, report, config) {
   const files = folders.map((folder) => `${folder}.txt`);

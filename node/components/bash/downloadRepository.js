@@ -1,5 +1,5 @@
 const { isExists, applyBashCommand } = require('../../helpers/files');
-const ERROR = require('../errors/constants');
+const ERROR = require('../Errors/constants');
 const {
   getCommand,
   openFolder,
