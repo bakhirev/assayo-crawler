@@ -5,7 +5,6 @@ RUN mkdir -p /usr/src/assayo_crawler/html
 WORKDIR /usr/src/assayo_crawler
 
 COPY node/ .
-COPY build/ ./html
 RUN npm install
 
 ENV PORT 80
