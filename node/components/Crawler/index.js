@@ -129,11 +129,12 @@ class Crawler {
 
     const step = queue.steps[queue.stepIndex];
     const progressInPercent = Math.ceil(100 * queue.stepIndex / queue.steps.length);
+    const repository = (step?.repository?.url || '').replace(/\/[^@]+@/, '//'); // remove login:pass
 
     return {
       status: this.status,
       report: step?.report?.log?.name || null,
-      repository: step?.repository?.url || null,
+      repository: repository || null,
       phase: step?.id || null,
       progressInPercent,
       ...this.statistic.get(),
