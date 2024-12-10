@@ -1,8 +1,8 @@
 > __[Русский](https://github.com/bakhirev/assayo/blob/main/documents/RU.md)__
 
 
-# [Assayo](https://assayo.online/?ref=github&lang=ru)
-Вспомогательный модуль приложения для визуализации и анализа лог файлов git ([demo](https://assayo.online/demo/?ref=github&dump=./test.txt), [install](https://assayo.online/demo/?ref=github), [docker](https://hub.docker.com/r/bakhirev/assayo), [reddit](https://www.reddit.com/r/ITManagers/comments/1e5k291/the_visualization_and_analysis_of_git_commit/), [habr](https://habr.com/ru/articles/763342/)).
+# [Assayo](https://bakhirev.github.io/?ref=github&lang=ru)
+Вспомогательный модуль приложения для визуализации и анализа лог файлов git ([demo](https://bakhirev.github.io/demo/?ref=github&dump=./test.txt), [install](https://bakhirev.github.io/demo/?ref=github), [docker](https://hub.docker.com/r/bakhirev/assayo), [reddit](https://www.reddit.com/r/ITManagers/comments/1e5k291/the_visualization_and_analysis_of_git_commit/), [habr](https://habr.com/ru/articles/763342/)).
 
 **Цель модуля:** автоматический сбор и объединение log файлов git`а.
 
@@ -176,4 +176,4 @@ javascript:(()=>{function getConfig(code, repositories) {return code && reposito
 ### 📧 Пожелания, предложения, замечания
 - telegramm [@bakhirev](https://t.me/bakhirev) (приоритетный способ связи)
 - [alexey-bakhirev@yandex.ru](mailto:alexey-bakhirev@yandex.ru)
-- сайт [https://assayo.online/](https://assayo.online/?ref=github&lang=ru)
+- сайт [https://bakhirev.github.io/](https://bakhirev.github.io/?ref=github&lang=ru)

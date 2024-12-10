@@ -105,4 +105,4 @@
 ### Пожелания, предложения, замечания
 - telegramm [@bakhirev](https://t.me/bakhirev) (приоритетный способ связи)
 - [alexey-bakhirev@yandex.ru](mailto:alexey-bakhirev@yandex.ru)
-- сайт [https://assayo.online/](https://assayo.online/?ref=github&lang=ru)
+- сайт [https://bakhirev.github.io/](https://bakhirev.github.io/?ref=github&lang=ru)
